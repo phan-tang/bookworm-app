@@ -3,24 +3,24 @@
 namespace App\Http\Repositories;
 
 use App\Models\Book;
-use App\Http\Resources\BookDetailsCollection;
+use Illuminate\Http\Request;
 
 class BookRepository
 {
-    public function getAllBookDetails($limit)
+    public function getAllBookDetails($perPage)
     {
         try {
-            $books = Book::allBookDetails()->paginate($limit);
+            $books = Book::allBookDetails()->paginate($perPage);
             return $books;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function getAllBooks($limit)
+    public function getAllBooks($perPage)
     {
         try {
-            $books = Book::all()->paginate($limit);
+            $books = Book::all()->paginate($perPage);
             return $books;
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -92,35 +92,94 @@ class BookRepository
         }
     }
 
-    public function getBooksSortedByOnSaleByCode($limit)
+    public function getBooksSortedByOnSale($request)
     {
         try {
-            $books = new BookDetailsCollection(Book::allBookDetails()->paginate(20));
-            $books = $books->sortByDesc(function ($item) {
-                return $item->resource->getDiscountAmount();
-            });
+            $limit = $this->getLimit($request);
+            $perPage = $this->getPerPage($request);
+            $books = Book::getAllBookDetails()
+                ->selectFinalPrice()
+                ->selectDiscountAmount()
+                ->orderBy('discount_amount', 'desc')
+                ->orderBy('final_price', 'asc')
+                ->displayBooks($limit, $perPage);
             return $books;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function getBooksSortedByPriceByCode($lowToHigh, $limit)
+    public function getBooksSortedByPrice($request)
     {
         try {
-            $books = new BookDetailsCollection(Book::allBookDetails()->get());
-            if ($lowToHigh === 'false') {
-                $books = $books->sortByDesc(function ($item) {
-                    return $item->resource->getFinalPrice();
-                });
-                return $books;
-            }
-            $books = $books->sortBy(function ($item) {
-                return $item->resource->getFinalPrice();
-            });
+            $limit = $this->getLimit($request);
+            $perPage = $this->getPerPage($request);
+            $order = $this->getOrder($request);
+            $books = Book::getAllBookDetails()
+                ->selectFinalPrice()
+                ->orderBy('final_price', $order)
+                ->displayBooks($limit, $perPage);
             return $books;
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    public function getBooksSortedByRecommended($request)
+    {
+        try {
+            $limit = $this->getLimit($request);
+            $perPage = $this->getPerPage($request);
+            $books = Book::getAllBookDetails()
+                ->selectAverageRatingStar()
+                ->selectFinalPrice()
+                ->orderBy('average_rating_star', 'desc')
+                ->orderBy('final_price', 'asc')
+                ->displayBooks($limit, $perPage);
+            return $books;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getBooksSortedByPopular($request)
+    {
+        try {
+            $limit = $this->getLimit($request);
+            $perPage = $this->getPerPage($request);
+            $books = Book::getAllBookDetails()
+                ->selectNumberOfReviews()
+                ->selectFinalPrice()
+                ->orderBy('number_of_reviews', 'desc')
+                ->orderBy('final_price', 'asc')
+                ->displayBooks($limit, $perPage);
+            return $books;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getPerPage(Request $request)
+    {
+        if ($request->input('perPage')) {
+            return $request->input('perPage');
+        }
+        return 15;
+    }
+
+    public function getLimit(Request $request)
+    {
+        if ($request->input('limit')) {
+            return $request->input('limit');
+        }
+        return null;
+    }
+
+    public function getOrder(Request $request)
+    {
+        if ($request->input('order')) {
+            return $request->input('order');
+        }
+        return 'asc';
     }
 }
