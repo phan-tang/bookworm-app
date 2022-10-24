@@ -7,7 +7,6 @@ use App\Http\Resources\BookDetailsCollection;
 use App\Http\Resources\BookDetailsResource;
 use App\Http\Resources\BookCollection;
 use App\Http\Resources\BookResource;
-use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookAPIController extends Controller
@@ -27,11 +26,7 @@ class BookAPIController extends Controller
      */
     public function index(Request $request)
     {
-        $limit = 20;
-        if ($request->input('limit')) {
-            $limit = $request->input('limit');
-        }
-        return new BookDetailsCollection($this->bookRepository->getAllBookDetails($limit));
+        return new BookDetailsCollection($this->bookRepository->getAllBookDetails($this->getPerPage($request)));
     }
 
     /**
@@ -41,11 +36,7 @@ class BookAPIController extends Controller
      */
     public function showBooksByAdmin(Request $request)
     {
-        $limit = 20;
-        if ($request->input('limit')) {
-            $limit = $request->input('limit');
-        }
-        return new BookCollection($this->bookRepository->getAllBooks($limit));
+        return new BookCollection($this->bookRepository->getAllBooks($this->getPerPage($request)));
     }
 
     /**
@@ -114,25 +105,29 @@ class BookAPIController extends Controller
         return new BookResource($this->bookRepository->deleteBook($id));
     }
 
-    public function showBooksSortedByOnSaleByCode(Request $request)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showBooksSortedByOnSale(Request $request)
     {
-        $limit = 20;
-        if ($request->input('limit')) {
-            $limit = $request->input('limit');
-        }
-        return $this->bookRepository->getBooksSortedByOnSaleByCode($limit);
+        return new BookDetailsCollection($this->bookRepository->getBooksSortedByOnSale($request));
     }
 
-    public function showBooksSortedByPriceByCode(Request $request)
+    public function showBooksSortedByPrice(Request $request)
     {
-        $lowToHigh = 'true';
-        if ($request->input('lowToHigh')) {
-            $lowToHigh = $request->input('lowToHigh');
-        }
-        $limit = 20;
-        if ($request->input('limit')) {
-            $limit = $request->input('limit');
-        }
-        return $this->bookRepository->getBooksSortedByPriceByCode($lowToHigh, $limit);
+        return new BookDetailsCollection($this->bookRepository->getBooksSortedByPrice($request));
+    }
+
+    public function showBooksSortedByRecommended(Request $request)
+    {
+        return new BookDetailsCollection($this->bookRepository->getBooksSortedByRecommended($request));
+    }
+
+    public function showBooksSortedByPopular(Request $request)
+    {
+        return new BookDetailsCollection($this->bookRepository->getBooksSortedByPopular($request));
     }
 }
