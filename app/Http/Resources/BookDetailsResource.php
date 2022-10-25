@@ -27,6 +27,8 @@ class BookDetailsResource extends JsonResource
             'discount_end_date' => $this->discount_end_date,
             'discount_amount' => $this->book_price - $this->final_price,
             'final_price' => $this->final_price,
+            'average_rating_star' => $this->average_rating_star,
+            'number_of_reviews' => $this->number_of_reviews,
         ];
     }
 }
