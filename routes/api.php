@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookAPIController;
+use App\Http\Controllers\ReviewAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('book', BookAPIController::class)->only([
+    'show'
+]);
+
+Route::get('/books', [BookAPIController::class, 'showBooksApplySortFilter']);
+
+Route::get('/reviews', [ReviewAPIController::class, 'showReviews']);
+Route::get('/reviews/sortBy/date', [ReviewAPIController::class, 'showBookReviewsSortByDate']);
