@@ -2,51 +2,36 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Resources\BookDetailsCollection;
+use App\Http\Resources\BookDetailsResource;
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookRepository
 {
-    public function getAllBookDetails($perPage)
-    {
-        try {
-            $books = Book::allBookDetails()->paginate($perPage);
-            return $books;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function getAllBooks($perPage)
-    {
-        try {
-            $books = Book::all()->paginate($perPage);
-            return $books;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
+    /**
+     * Display the specified book detail.
+     *
+     * @param  int  $id
+     * @return \App\Http\Resources\BookDetailsResource
+     */
     public function getBookDetail($id)
     {
         try {
-            $book = Book::allBookDetails()->find($id);
-            return $book;
+            $book = Book::getAllBookDetails()->find($id);
+            return new BookDetailsResource($book);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function getBook($id)
-    {
-        try {
-            $book = Book::find($id);
-            return $book;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
+    /**
+     * Store a newly created book in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Http\Resources\BookResource
+     */
     public function createBook($request)
     {
         try {
@@ -58,12 +43,19 @@ class BookRepository
             $book->book_price = $request->input('book_price');
             $book->book_cover_photo = $request->input('book_cover_photo');
             $book->save();
-            return $book;
+            return new BookResource($book);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
+    /**
+     * Update the specified book in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \App\Http\Resources\BookResource
+     */
     public function updateBook($request, $id)
     {
         try {
@@ -75,90 +67,61 @@ class BookRepository
             $book->book_price = $request->input('book_price');
             $book->book_cover_photo = $request->input('book_cover_photo');
             $book->save();
-            return $book;
+            return new BookResource($book);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
+    /**
+     * Remove the specified book from storage.
+     *
+     * @param  int  $id
+     * @return \App\Http\Resources\BookResource
+     */
     public function deleteBook($id)
     {
         try {
             $book = Book::find($id);
             $book->delete();
-            return $book;
+            return  new BookResource($book);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function getBooksSortedByOnSale($request)
+    /**
+     * Display a listing of the book apply sort and filter.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Http\Resources\BookDetailsCollection
+     */
+    public function getBooksApplySortFilter($request)
     {
         try {
+            $params = $request->all();
             $limit = $this->getLimit($request);
+            $order = $this->getOrder($request);
             $perPage = $this->getPerPage($request);
             $books = Book::getAllBookDetails()
                 ->selectFinalPrice()
                 ->selectDiscountAmount()
-                ->orderBy('discount_amount', 'desc')
-                ->orderBy('final_price', 'asc')
-                ->displayBooks($limit, $perPage);
-            return $books;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function getBooksSortedByPrice($request)
-    {
-        try {
-            $limit = $this->getLimit($request);
-            $perPage = $this->getPerPage($request);
-            $order = $this->getOrder($request);
-            $books = Book::getAllBookDetails()
-                ->selectFinalPrice()
-                ->orderBy('final_price', $order)
-                ->displayBooks($limit, $perPage);
-            return $books;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function getBooksSortedByRecommended($request)
-    {
-        try {
-            $limit = $this->getLimit($request);
-            $perPage = $this->getPerPage($request);
-            $books = Book::getAllBookDetails()
                 ->selectAverageRatingStar()
-                ->selectFinalPrice()
-                ->orderBy('average_rating_star', 'desc')
-                ->orderBy('final_price', 'asc')
-                ->displayBooks($limit, $perPage);
-            return $books;
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function getBooksSortedByPopular($request)
-    {
-        try {
-            $limit = $this->getLimit($request);
-            $perPage = $this->getPerPage($request);
-            $books = Book::getAllBookDetails()
                 ->selectNumberOfReviews()
-                ->selectFinalPrice()
-                ->orderBy('number_of_reviews', 'desc')
-                ->orderBy('final_price', 'asc')
+                ->applySortFilter($params, $order)
                 ->displayBooks($limit, $perPage);
-            return $books;
+            return new BookDetailsCollection($books);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
+    /**
+     * Get number of books per page for a listing of book.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return int $perPage
+     */
     public function getPerPage(Request $request)
     {
         if ($request->input('perPage')) {
@@ -167,6 +130,12 @@ class BookRepository
         return 15;
     }
 
+    /**
+     * Get limit for a listing of book.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return int or null $limit
+     */
     public function getLimit(Request $request)
     {
         if ($request->input('limit')) {
@@ -175,6 +144,12 @@ class BookRepository
         return null;
     }
 
+    /**
+     * Get sort order for a listing of book.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return string $order
+     */
     public function getOrder(Request $request)
     {
         if ($request->input('order')) {

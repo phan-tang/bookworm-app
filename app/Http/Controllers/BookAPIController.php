@@ -3,10 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\BookRepository;
-use App\Http\Resources\BookDetailsCollection;
-use App\Http\Resources\BookDetailsResource;
-use App\Http\Resources\BookCollection;
-use App\Http\Resources\BookResource;
 use Illuminate\Http\Request;
 
 class BookAPIController extends Controller
@@ -20,30 +16,10 @@ class BookAPIController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        return new BookDetailsCollection($this->bookRepository->getAllBookDetails($this->getPerPage($request)));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showBooksByAdmin(Request $request)
-    {
-        return new BookCollection($this->bookRepository->getAllBooks($this->getPerPage($request)));
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created book in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\BookResource
      */
     public function store(Request $request)
     {
@@ -52,82 +28,56 @@ class BookAPIController extends Controller
             'book_title' => 'required', 'book_summary' => 'required',
             'book_price' => 'required'
         ]);
-        return new BookResource($this->bookRepository->createBook($request));
+        return $this->bookRepository->createBook($request);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified book detail.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\BookDetailsResource
      */
     public function show($id)
     {
-        return new BookDetailsResource($this->bookRepository->getBookDetail($id));
+        return $this->bookRepository->getBookDetail($id);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showBookByAdmin($id)
-    {
-        return new BookResource($this->bookRepository->getBook($id));
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update the specified book in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\BookResource
      */
-    public function updateBookByAdmin(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'category_id' => 'required', 'author_id' => 'required',
             'book_title' => 'required', 'book_summary' => 'required',
             'book_price' => 'required'
         ]);
-        return new BookResource($this->bookRepository->updateBook($request, $id));
+        return $this->bookRepository->updateBook($request, $id);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified book from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\BookResource
      */
-    public function destroyBookByAdmin($id)
+    public function destroy($id)
     {
-        return new BookResource($this->bookRepository->deleteBook($id));
+        return $this->bookRepository->deleteBook($id);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display a listing of the book apply sort and filter.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Http\Resources\BookDetailsCollection
      */
-    public function showBooksSortedByOnSale(Request $request)
+    public function showBooksApplySortFilter(Request $request)
     {
-        return new BookDetailsCollection($this->bookRepository->getBooksSortedByOnSale($request));
-    }
-
-    public function showBooksSortedByPrice(Request $request)
-    {
-        return new BookDetailsCollection($this->bookRepository->getBooksSortedByPrice($request));
-    }
-
-    public function showBooksSortedByRecommended(Request $request)
-    {
-        return new BookDetailsCollection($this->bookRepository->getBooksSortedByRecommended($request));
-    }
-
-    public function showBooksSortedByPopular(Request $request)
-    {
-        return new BookDetailsCollection($this->bookRepository->getBooksSortedByPopular($request));
+        return $this->bookRepository->getBooksApplySortFilter($request);
     }
 }
