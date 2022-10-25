@@ -4,14 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Traits\ApplySortFilter;
 
 class Book extends Model
 {
     use HasFactory;
+    use ApplySortFilter;
 
     public $timestamps = false;
     protected $table = 'book';
-    protected $append = ['discount_amount', 'final_price'];
+    protected $append = ['discount_amount', 'final_price', 'average_rating_star', 'number_of_reviews'];
+
+    protected $fields = [
+        'sortBy',
+        'author_id',
+        'category_id',
+        'star'
+    ];
 
     public function author()
     {
@@ -30,7 +39,7 @@ class Book extends Model
 
     public function discounts()
     {
-        return $this->hasOne(Discount::class);
+        return $this->hasMany(Discount::class);
     }
 
     /**
@@ -145,5 +154,69 @@ class Book extends Model
             ->when($limit == null, function ($query) use ($perPage) {
                 return $query->paginate($perPage);
             });
+    }
+
+    /**
+     * Scope a query to get list of books sorted by on sale.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function sortByOnSale($query)
+    {
+        return $query->orderBy('discount_amount', 'desc')
+            ->orderBy('final_price', 'asc');
+    }
+
+    /**
+     * Scope a query to get list of books sorted by recommended.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function sortByRecommended($query)
+    {
+        return $query->orderBy('average_rating_star', 'desc')
+            ->orderBy('final_price', 'asc');
+    }
+
+    /**
+     * Scope a query to get list of books sorted by popular.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function sortByPopular($query)
+    {
+        return $query->orderBy('number_of_reviews', 'desc')
+            ->orderBy('final_price', 'asc');
+    }
+
+    /**
+     * Scope a query to get list of books sorted by price.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param string $order
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function sortByPrice($query, $order)
+    {
+        return $query->orderBy('final_price', $order);
+    }
+
+    /**
+     * Scope a query to get list of books filtered by input fields.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param string $field
+     * @param int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function filterBy($query, $field, $value)
+    {
+        if ($field == 'star') {
+            return $query->havingRaw("AVG(COALESCE(review.rating_start, 0)) >= ?", [$value]);
+        }
+        return $query->where('book.' . $field, '=', $value);
     }
 }
