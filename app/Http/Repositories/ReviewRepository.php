@@ -2,22 +2,42 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Resources\ReviewCollection;
+use App\Http\Resources\ReviewResource;
 use App\Models\Review;
-use App\Models\Book;
 use Illuminate\Support\Carbon;
 
-class ReviewRepository
+
+class ReviewRepository extends BaseRepository
 {
-    public function getAllBookReviews($id, $limit)
+    /**
+     * Display a listing of the book reviews apply sort and filter.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Http\Resources\ReviewCollection
+     */
+    public function getBookReviews($request)
     {
         try {
-            $reviews = Review::where('book_id', $id)->paginate($limit);
-            return $reviews;
+            $id = $request->input('id');
+            $params = $request->all();
+            $order = $this->getOrder($request);
+            $perPage = $this->getPerPage($request);
+            $reviews = Review::where('book_id', $id)
+                ->applySortFilter($params, $order)
+                ->paginate($perPage);
+            return new ReviewCollection($reviews);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
+    /**
+     * Store a newly created review in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Http\Resources\ReviewResource
+     */
     public function createBookReview($request)
     {
         try {
@@ -27,12 +47,19 @@ class ReviewRepository
             $review->rating_start = $request->input('rating_start');
             $review->review_date = Carbon::now();
             $review->save();
-            return $review;
+            return new ReviewResource($review);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
+    /**
+     * Update the specified review in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \App\Http\Resources\ReviewResource
+     */
     public function updateBookReview($request, $id)
     {
         try {
@@ -41,28 +68,26 @@ class ReviewRepository
             $review->review_details = $request->input('review_details');
             $review->rating_start = $request->input('rating_start');
             $review->save();
-            return $review;
+            return new ReviewResource($review);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
 
+    /**
+     * Remove the specified review from storage.
+     *
+     * @param  int  $id
+     * @return \App\Http\Resources\ReviewResource
+     */
     public function deleteBookReview($id)
     {
         try {
             $review = Review::find($id);
             $review->delete();
-            return $review;
+            return new ReviewResource($review);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-    }
-
-    public function getBookReviewsSortByDate($id, $newest, $limit)
-    {
-        if ($newest === 'false') {
-            return Review::where('book_id', $id)->orderBy('review_date')->paginate($limit);
-        }
-        return Review::where('book_id', $id)->orderBy('review_date', 'desc')->paginate($limit);
     }
 }
