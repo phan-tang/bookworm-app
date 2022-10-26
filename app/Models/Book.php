@@ -16,7 +16,7 @@ class Book extends Model
     protected $append = ['discount_amount', 'final_price', 'average_rating_star', 'number_of_reviews'];
 
     protected $fields = [
-        'sortBy',
+        'sort',
         'author_id',
         'category_id',
         'star'
