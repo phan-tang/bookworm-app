@@ -104,16 +104,20 @@ class ReviewRepository extends BaseRepository
      */
     public function getAverageStar($data)
     {
-        $data = json_decode($data);
-        $average_rating_star = 0;
-        if (count($data) != 0) {
-            foreach ($data as $key => $value) {
-                $average_rating_star += $value->rating_start;
+        try {
+            $data = json_decode($data);
+            $average_rating_star = 0;
+            if (count($data) != 0) {
+                foreach ($data as $key => $value) {
+                    $average_rating_star += $value->rating_start;
+                }
+                $average_rating_star = $average_rating_star / count($data);
+                return $average_rating_star;
             }
-            $average_rating_star = $average_rating_star / count($data);
             return $average_rating_star;
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
-        return $average_rating_star;
     }
 
     /**
@@ -124,14 +128,18 @@ class ReviewRepository extends BaseRepository
      */
     public function getCountReviews($data)
     {
-        $data = json_decode($data);
-        $count_reviews = array(count($data), 0, 0, 0, 0, 0);
-        if (count($data) != 0) {
-            foreach ($data as $key => $value) {
-                $count_reviews[$value->rating_start] += 1;
+        try {
+            $data = json_decode($data);
+            $count_reviews = array(count($data), 0, 0, 0, 0, 0);
+            if (count($data) != 0) {
+                foreach ($data as $key => $value) {
+                    $count_reviews[$value->rating_start] += 1;
+                }
+                return $count_reviews;
             }
             return $count_reviews;
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
-        return $count_reviews;
     }
 }
