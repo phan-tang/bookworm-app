@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BookAPIController;
+use App\Http\Controllers\FilterAPIController;
 use App\Http\Controllers\ReviewAPIController;
+use App\Http\Controllers\UserAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +26,20 @@ Route::resource('book', BookAPIController::class)->only([
     'show'
 ]);
 
-Route::get('/books', [BookAPIController::class, 'showBooksApplySortFilter']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/users', [UserAPIController::class, 'index']); //admin only
+    Route::resource('book', BookAPIController::class)->except([
+        'show', 'index' //admin only
+    ]);
+    Route::resource('review', ReviewAPIController::class)->only([
+        'update', 'destroy' //admin only
+    ]);
+    Route::get('/logout', [UserAPIController::class, 'logout']);
+});
 
+Route::get('/books', [BookAPIController::class, 'showBooksApplySortFilter']);
 Route::get('/reviews', [ReviewAPIController::class, 'showReviews']);
-Route::get('/reviews/sortBy/date', [ReviewAPIController::class, 'showBookReviewsSortByDate']);
+Route::get('/filter_fields', [FilterAPIController::class, 'showFilterFields']);
+
+Route::post('/create_review', [ReviewAPIController::class, 'store']);
+Route::post('/login', [UserAPIController::class, 'login']);
