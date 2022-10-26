@@ -6,9 +6,8 @@ use App\Http\Resources\BookDetailsCollection;
 use App\Http\Resources\BookDetailsResource;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
-use Illuminate\Http\Request;
 
-class BookRepository
+class BookRepository extends BaseRepository
 {
     /**
      * Display the specified book detail.
@@ -114,47 +113,5 @@ class BookRepository
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-    }
-
-    /**
-     * Get number of books per page for a listing of book.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return int $perPage
-     */
-    public function getPerPage(Request $request)
-    {
-        if ($request->input('perPage')) {
-            return $request->input('perPage');
-        }
-        return 15;
-    }
-
-    /**
-     * Get limit for a listing of book.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return int or null $limit
-     */
-    public function getLimit(Request $request)
-    {
-        if ($request->input('limit')) {
-            return $request->input('limit');
-        }
-        return null;
-    }
-
-    /**
-     * Get sort order for a listing of book.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string $order
-     */
-    public function getOrder(Request $request)
-    {
-        if ($request->input('order')) {
-            return $request->input('order');
-        }
-        return 'asc';
     }
 }
