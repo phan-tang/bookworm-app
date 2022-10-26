@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\ReviewRepository;
-use App\Http\Resources\ReviewCollection;
-use App\Http\Resources\ReviewResource;
 use Illuminate\Http\Request;
-use App\Models\Book;
 
 class ReviewAPIController extends Controller
 {
@@ -35,7 +32,7 @@ class ReviewAPIController extends Controller
      * Display a listing of the book reviews apply sort and filter.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Http\Resources\ReviewCollection
+     * @return \Illuminate\Http\Response
      */
     public function showReviews(Request $request)
     {

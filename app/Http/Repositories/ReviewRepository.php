@@ -2,7 +2,6 @@
 
 namespace App\Http\Repositories;
 
-use App\Http\Resources\ReviewCollection;
 use App\Http\Resources\ReviewResource;
 use App\Models\Review;
 use Illuminate\Support\Carbon;
@@ -14,7 +13,7 @@ class ReviewRepository extends BaseRepository
      * Display a listing of the book reviews apply sort and filter.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Http\Resources\ReviewCollection
+     * @return \Illuminate\Http\Response
      */
     public function getBookReviews($request)
     {
@@ -24,9 +23,15 @@ class ReviewRepository extends BaseRepository
             $order = $this->getOrder($request);
             $perPage = $this->getPerPage($request);
             $reviews = Review::where('book_id', $id)
-                ->applySortFilter($params, $order)
-                ->paginate($perPage);
-            return new ReviewCollection($reviews);
+                ->applySortFilter($params, $order);
+            $data = $reviews->get();
+            $average_rating_star = $this->getAverageStar($data);
+            $count_reviews = $this->getCountReviews($data);
+            return response()->json([
+                'reviews' => $reviews->paginate($perPage),
+                'average_rating_star' => $average_rating_star,
+                'count_reviews' => $count_reviews
+            ]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -89,5 +94,44 @@ class ReviewRepository extends BaseRepository
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    /**
+     * Get average star of book reviews.
+     *
+     * @param  \Illuminate\Database\Eloquent\Collection  $data
+     * @return int $average_rating_star
+     */
+    public function getAverageStar($data)
+    {
+        $data = json_decode($data);
+        $average_rating_star = 0;
+        if (count($data) != 0) {
+            foreach ($data as $key => $value) {
+                $average_rating_star += $value->rating_start;
+            }
+            $average_rating_star = $average_rating_star / count($data);
+            return $average_rating_star;
+        }
+        return $average_rating_star;
+    }
+
+    /**
+     * Get number of reviews for each star value.
+     *
+     * @param  \Illuminate\Database\Eloquent\Collection  $data
+     * @return array $count_reviews
+     */
+    public function getCountReviews($data)
+    {
+        $data = json_decode($data);
+        $count_reviews = array(count($data), 0, 0, 0, 0, 0);
+        if (count($data) != 0) {
+            foreach ($data as $key => $value) {
+                $count_reviews[$value->rating_start] += 1;
+            }
+            return $count_reviews;
+        }
+        return $count_reviews;
     }
 }
