@@ -18,74 +18,53 @@ class ReviewAPIController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created review in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ReviewResource
      */
     public function store(Request $request)
     {
         $this->validate($request, [
             'review_title' => 'required', 'rating_start' => 'required',
         ]);
-        return new ReviewResource($this->reviewRepository->createBookReview($request));
+        return $this->reviewRepository->createBookReview($request);
     }
 
     /**
-     * Display the specified resource.
+     * Display a listing of the book reviews apply sort and filter.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \App\Http\Resources\ReviewCollection
      */
-    public function show(Request $request, $id)
+    public function showReviews(Request $request)
     {
-        $limit = 20;
-        if ($request->input('limit')) {
-            $limit = $request->input('limit');
-        }
-        return new ReviewCollection($this->reviewRepository->getAllBookReviews($id, $limit));
+        return $this->reviewRepository->getBookReviews($request);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified review in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ReviewResource
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'review_title' => 'required', 'rating_start' => 'required',
         ]);
-        return new ReviewResource($this->reviewRepository->updateBookReview($request, $id));
+        return $this->reviewRepository->updateBookReview($request, $id);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified review from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\ReviewResource
      */
     public function destroy($id)
     {
-        return new ReviewResource($this->reviewRepository->deleteBookReview($id));
-    }
-
-    public function showBookReviewsSortByDate(Request $request)
-    {
-        $this->validate($request, [
-            'id' => 'required'
-        ]);
-        $id = $request->input('id');
-        $newest = 'true';
-        if ($request->input('newest')) {
-            $newest = $request->input('newest');
-        }
-        $limit = 20;
-        if ($request->input('limit')) {
-            $limit = $request->input('limit');
-        }
-        return $this->reviewRepository->getBookReviewsSortByDate($id, $newest, $limit);
+        return $this->reviewRepository->deleteBookReview($id);
     }
 }
