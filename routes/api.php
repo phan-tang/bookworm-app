@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookAPIController;
 use App\Http\Controllers\FilterAPIController;
+use App\Http\Controllers\OrderAPIController;
 use App\Http\Controllers\ReviewAPIController;
 use App\Http\Controllers\UserAPIController;
 use Illuminate\Http\Request;
@@ -22,20 +23,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('book', BookAPIController::class)->only([
-    'show'
-]);
-
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/users', [UserAPIController::class, 'index']); //admin only
     Route::resource('book', BookAPIController::class)->except([
         'show', 'index' //admin only
     ]);
     Route::resource('review', ReviewAPIController::class)->only([
         'update', 'destroy' //admin only
     ]);
+
+    Route::get('/users', [UserAPIController::class, 'index']); //admin only
     Route::get('/logout', [UserAPIController::class, 'logout']);
+
+    Route::post('/place_order', [OrderAPIController::class, 'store']);
 });
+
+Route::resource('book', BookAPIController::class)->only([
+    'show'
+]);
 
 Route::get('/books', [BookAPIController::class, 'showBooksApplySortFilter']);
 Route::get('/reviews', [ReviewAPIController::class, 'showReviews']);
