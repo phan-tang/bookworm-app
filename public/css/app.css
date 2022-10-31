@@ -41,3 +41,13 @@ body .final-price {
   font-size: 20px;
   font-weight: bold;
 }
+body .button-in-list {
+  background-color: white;
+  text-align: left;
+  font-size: 15px;
+  color: black;
+  border: none;
+}
+body .button-in-list:hover {
+  color: #9C4343;
+}

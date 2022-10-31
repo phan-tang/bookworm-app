@@ -20,12 +20,12 @@ import '../css/app.scss';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Home from './components/Page/Home/Home';
-import Shop from './components/Page/Shop/Shop';
-import About from './components/Page/About/About';
-import Cart from './components/Page/Cart/Cart';
-import Header from './components/Page/Header/Header';
-import Footer from './components/Page/Footer/Footer';
+import Home from './components/page/home/home';
+import Shop from './components/page/shop/shop';
+import About from './components/page/about/about';
+import Cart from './components/page/cart/cart';
+import Header from './components/element/header/header';
+import Footer from './components/element/footer/footer';
 import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
