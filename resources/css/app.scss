@@ -1,3 +1,54 @@
 body {
-	background: red;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+	.container{
+		margin-top: 100px;
+	}
+
+	.line{
+		background-color: black;
+		height: 1px;
+	}
+
+	.part-title{
+		p{
+			float: left;
+			font-size: 22px;
+			font-weight: bold;
+			color: #9C4343;
+		}
+	}
+
+	.page-padding-content{
+		padding-left: 120px;
+		padding-right: 120px;
+	}
+
+	.button{
+		background-color: #9C4343;
+		color: white;
+		padding: 8px;
+		border-radius: 8px;
+		border: 1px solid white;
+		font-weight: bold;
+	  }
+	  
+	.button:hover{
+	color: #9C4343;
+	background-color: white;
+	}
+
+	.badge{
+		background-color: black;
+	}
+
+	.previous-price{
+		text-decoration: line-through;
+		font-size: 15px;
+	}
+
+	.final-price{
+		font-size: 20px;
+		font-weight: bold;
+	}
 }

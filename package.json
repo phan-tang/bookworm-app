@@ -11,16 +11,28 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.14.5",
+        "@fortawesome/fontawesome-free": "^6.2.0",
+        "@popperjs/core": "^2.10.2",
+        "@vitejs/plugin-react": "^2.0.0",
         "axios": "^0.21",
-        "bootstrap": "^5.0.2",
+        "bootstrap": "^5.2.1",
         "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.21",
         "react": "^17.0.2",
-        "react-bootstrap": "^1.6.1",
+        "react-bootstrap": "^1.6.6",
         "react-dom": "^17.0.2",
         "react-redux": "^7.2.4",
+        "react-router-dom": "^6.4.2",
         "resolve-url-loader": "^4.0.0",
-        "sass": "^1.35.1",
+        "sass": "^1.32.11",
         "sass-loader": "^12.1.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.2.0",
+        "@fortawesome/free-solid-svg-icons": "^6.2.0",
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "babel-plugin-macros": "^3.1.0",
+        "font-awesome": "^4.7.0",
+        "react-icon": "^1.0.0"
     }
 }
