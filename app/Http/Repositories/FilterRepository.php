@@ -18,14 +18,29 @@ class FilterRepository extends BaseRepository
         try {
             $authors = Author::orderBy('author_name')->get();
             $categories = Category::orderBy('category_name')->get();
-            $stars = array(1, 2, 3, 4, 5);
+            $stars = $this->getStars();
             return response()->json([
-                'authors' => $authors,
-                'categories' => $categories,
-                'stars' => $stars
+                'author' => $authors,
+                'category' => $categories,
+                'star' => $stars
             ]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    /**
+     * Get list of rating stars.
+     *
+     * @return object $stars
+     */
+    public function getStars()
+    {
+        $stars = array();
+        for ($i = 1; $i <= 5; $i++) {
+            $star = (object)["id" => $i, "star_name" => $i . " Star"];
+            array_push($stars, $star);
+        }
+        return $stars;
     }
 }
