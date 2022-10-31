@@ -1,0 +1,22 @@
+.footer{
+    background-color: #F3EFEF;
+    margin-top: 100px;
+    padding: 30px;
+    .brand-icon{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: flex-end;
+        width: 200px;
+    }
+    .brand-information{
+        width: auto;
+        h5{
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        p{
+            margin-bottom: 2px;
+        }
+    }
+}
