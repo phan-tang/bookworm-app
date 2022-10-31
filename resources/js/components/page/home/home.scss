@@ -1,0 +1,45 @@
+.col.view-all{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .button{
+        font-size: 10px;
+        text-decoration: none;
+        padding: 10px;
+    }
+}
+
+.books-show{
+    border: 1px solid lightgray;
+    margin-top: 10px;
+}
+
+.featured-books{
+    .part-title{
+        text-align: center;
+    }
+
+    .tabs{
+        display: flex;
+        justify-content: center;
+      
+        .nav-item.nav-link{
+            background-color: white;
+            color: #E69393;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid white;
+            font-weight: bold;
+            margin: 5px;
+        }
+      
+        .nav-item.nav-link:hover{
+            color: #9C4343;
+        }
+      
+        .nav-item.nav-link.active{
+            color: black;
+            background-color: #E69393;
+        }
+    }
+}
