@@ -13,6 +13,7 @@ function Home() {
     const [recommendedBooks, setRecommendedBooks] = useState([]);
     const [popularBooks, setPopularBooks] = useState([]);
 
+    //Function to get books sorted by on sale
     const fetchOnSaleBooksData = async () => {
         await axios.get('api/books?sort=on-sale&limit=10')
             .then(({ data }) => {
@@ -21,6 +22,7 @@ function Home() {
             .catch(error => console.log(error));
     }
 
+    //Function to get books sorted by recommended
     const fetchRecommendedBooksData = async () => {
         await axios.get('api/books?sort=recommended&limit=8')
             .then(({ data }) => {
@@ -29,6 +31,7 @@ function Home() {
             .catch(error => console.log(error));
     }
 
+    //Function to get books sorted by popularity
     const fetchPopularBooksData = async () => {
         await axios.get('api/books?sort=popular&limit=8')
             .then(({ data }) => {

@@ -4,6 +4,7 @@ import BookRow from '../bookRow/bookRow';
 
 function Carousel(props) {
 
+    //Function to display carousel slides
     const displayCarouselItems = (books, perRow) => {
         if (books.length != 0) {
             let items = _.chunk(books, perRow);

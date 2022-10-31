@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 function BookCard(props) {
 
+    //Function to display book cover photo
     const displayBookCoverImage = (book) => {
         if (book.book_cover_photo != null) {
             return (<img src={'images/' + book.book_cover_photo + '.jpg'} className="card-img-top" />);
@@ -13,6 +14,7 @@ function BookCard(props) {
         );
     }
 
+    //Function to display book price
     const displayBookPrice = (book) => {
         if (book.discount_amount != 0) {
             return (<>
