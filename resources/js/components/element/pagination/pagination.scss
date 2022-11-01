@@ -1,0 +1,19 @@
+.pagination{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    li.page-item.active button{
+        background-color: #9C4343;
+        color: white;
+        border: 1px solid #9C4343;
+    }
+
+    button{
+        color: black;
+    }
+
+    button:hover{
+        color: #E69393;
+    }
+}
