@@ -93,7 +93,7 @@ class BookRepository extends BaseRepository
      * Display a listing of the book apply sort and filter.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Http\Resources\BookDetailsCollection
+     * @return \Illuminate\Http\Response
      */
     public function getBooksApplySortFilter($request)
     {
@@ -109,7 +109,10 @@ class BookRepository extends BaseRepository
                 ->selectNumberOfReviews()
                 ->applySortFilter($params, $order)
                 ->displayBooks($limit, $perPage);
-            return new BookDetailsCollection($books);
+            $books = new BookDetailsCollection($books);
+            return response()->json([
+                "resource" => $books->resource,
+            ]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

@@ -17,7 +17,7 @@ function Home() {
     const fetchOnSaleBooksData = async () => {
         await axios.get('api/books?sort=on-sale&limit=10')
             .then(({ data }) => {
-                setOnSaleBooks(data.data);
+                setOnSaleBooks(data.resource);
             })
             .catch(error => console.log(error));
     }
@@ -26,7 +26,7 @@ function Home() {
     const fetchRecommendedBooksData = async () => {
         await axios.get('api/books?sort=recommended&limit=8')
             .then(({ data }) => {
-                setRecommendedBooks(data.data);
+                setRecommendedBooks(data.resource);
             })
             .catch(error => console.log(error));
     }
@@ -35,7 +35,7 @@ function Home() {
     const fetchPopularBooksData = async () => {
         await axios.get('api/books?sort=popular&limit=8')
             .then(({ data }) => {
-                setPopularBooks(data.data);
+                setPopularBooks(data.resource);
             })
             .catch(error => console.log(error));
     }
@@ -85,7 +85,7 @@ function Home() {
                             {/* <!-- Books Show --> */}
                             <div className="row books-show">
                                 <div className="row page-padding-content books-show-content">
-                                    <BookRow books={recommendedBooks} perRow={perRow}></BookRow>
+                                    <BookRow books={recommendedBooks}></BookRow>
                                 </div>
                             </div>
                         </Tab>
@@ -93,7 +93,7 @@ function Home() {
                             {/* <!-- Books Show --> */}
                             <div className="row books-show">
                                 <div className="row page-padding-content books-show-content">
-                                    <BookRow books={popularBooks} perRow={perRow}></BookRow>
+                                    <BookRow books={popularBooks}></BookRow>
                                 </div>
                             </div>
                         </Tab>

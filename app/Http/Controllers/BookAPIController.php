@@ -74,7 +74,7 @@ class BookAPIController extends Controller
      * Display a listing of the book apply sort and filter.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Http\Resources\BookDetailsCollection
+     * @return \Illuminate\Http\Response
      */
     public function showBooksApplySortFilter(Request $request)
     {
