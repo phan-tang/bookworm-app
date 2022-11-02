@@ -33,7 +33,7 @@ function Shop() {
         ],
     };
 
-    //Function to get filter fields
+    //Function used to get filter fields
     const fetchFilterFields = async () => {
         await axios.get('api/filter_fields')
             .then(({ data }) => {
@@ -42,7 +42,7 @@ function Shop() {
             .catch(error => console.log(error));
     }
 
-    //Function to get books
+    //Function used to get books
     const fetchBooks = async (api) => {
         await axios.get(api)
             .then(({ data }) => {
@@ -52,6 +52,7 @@ function Shop() {
             .catch(error => console.log(error));
     }
 
+    //ComponentDidMount
     useEffect(() => {
         const abort = new AbortController();
         fetchFilterFields();
@@ -60,7 +61,7 @@ function Shop() {
         return () => abort.abort();
     }, []);
 
-    //Function to get params apply for api to get list of books
+    //Function used to get params apply for api to get list of books
     const getParams = (addParams) => {
         if (addParams != null) {
             let tempParams = params;
@@ -73,7 +74,7 @@ function Shop() {
         }
     }
 
-    //Function to get api to get list of books
+    //Function used to get api to get list of books
     const getAPI = () => {
         let api = 'api/books';
         api += "?";
@@ -85,7 +86,7 @@ function Shop() {
         return api;
     }
 
-    //Function to apply sort and filter for list of books
+    //Function used to apply sort and filter for list of books
     const handleChangeParams = (addParams) => {
         getParams(addParams);
         let api = getAPI(params);
@@ -93,7 +94,7 @@ function Shop() {
         fetchBooks(api);
     }
 
-    //Function to display describe books show content
+    //Function used to display describe books show content
     const displayDescribeBookShowContent = () => {
         if (books != null) {
             return (
@@ -103,7 +104,7 @@ function Shop() {
         return (<></>);
     }
 
-    //Function to display books show content
+    //Function used to display books show content
     const displayBooksShowContent = () => {
         if (books != null) {
             return (
@@ -113,11 +114,11 @@ function Shop() {
         return (<></>);
     }
 
-    //Function to display pagination
+    //Function used to display pagination
     const displayBooksPagination = () => {
         if (books != null) {
             return (
-                <Pagination links={books.links} current={books.current_page}></Pagination>
+                <Pagination links={books.links} current={books.current_page} handleParams={handleChangeParams}></Pagination>
             );
         }
         return (<></>);
