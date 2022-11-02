@@ -47,32 +47,51 @@ function Shop() {
         await axios.get(api)
             .then(({ data }) => {
                 setBooks(data.resource);
+                console.log("Fecth");
             })
             .catch(error => console.log(error));
     }
 
-    // //Function to get params apply for api to get list of books
-    // const getParams = (addParams) => {
-    //     if (addParams != null) {
-    //         temp = params;
-    //         Object.keys(addParams).forEach(key => {
-    //             temp[key] = addParams[key];
-    //         });
-    //         setParams(temp);
-    //     }
-    // }
+    useEffect(() => {
+        const abort = new AbortController();
+        fetchFilterFields();
+        fetchBooks('api/books?sort=on_sale');
+        console.log("render")
+        return () => abort.abort();
+    }, []);
 
-    // //Function to get api to get list of books
-    // const getAPI = () => {
-    //     let api = 'api/books';
-    //     if (params != null) {
-    //         api += "?";
-    //         Object.keys(params).forEach(key => {
-    //             api += key + "=" + params[key];
-    //         });
-    //     }
-    //     return api;
-    // }
+    //Function to get params apply for api to get list of books
+    const getParams = (addParams) => {
+        if (addParams != null) {
+            let tempParams = params;
+            Object.keys(addParams).forEach(key => {
+                tempParams[key] = addParams[key];
+            });
+            setParams(tempParams);
+            console.log(params)
+            console.log("Change Params");
+        }
+    }
+
+    //Function to get api to get list of books
+    const getAPI = () => {
+        let api = 'api/books';
+        api += "?";
+        Object.keys(params).forEach(key => {
+            if (params[key] != null) {
+                api += key + "=" + params[key] + "&";
+            }
+        });
+        return api;
+    }
+
+    //Function to apply sort and filter for list of books
+    const handleChangeParams = (addParams) => {
+        getParams(addParams);
+        let api = getAPI(params);
+        console.log(api);
+        fetchBooks(api);
+    }
 
     //Function to display describe books show content
     const displayDescribeBookShowContent = () => {
@@ -104,14 +123,6 @@ function Shop() {
         return (<></>);
     }
 
-    useEffect(() => {
-        const abort = new AbortController();
-        fetchFilterFields();
-        fetchBooks('api/books?sort=on_sale');
-        console.log("render")
-        return () => abort.abort();
-    }, []);
-
     return (
         <>
             {/* <!-- Shop --> */}
@@ -129,9 +140,7 @@ function Shop() {
                     <div className="row">
                         {/* <!-- Filter --> */}
                         <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 filter-book">
-                            <div className='row'>
-                                <FilterFields fields={filterFields}></FilterFields>
-                            </div>
+                            <FilterFields fields={filterFields} handleParams={handleChangeParams}></FilterFields>
                         </div>
                         {/* <!-- Books Show --> */}
                         <div className="col-xl-10 col-lg-10 col-md-12 col-sm-12 shop-books-show">
@@ -140,8 +149,8 @@ function Shop() {
                                     {displayDescribeBookShowContent()}
                                 </div>
                                 <div className="col-6 edit-books-show-content">
-                                    <Dropdown fields={sortFields} handleParams={getParams}></Dropdown>
-                                    <Dropdown fields={showFields} handleParams={getParams}></Dropdown>
+                                    <Dropdown fields={sortFields} handleParams={handleChangeParams}></Dropdown>
+                                    <Dropdown fields={showFields} handleParams={handleChangeParams}></Dropdown>
                                 </div>
                             </div>
                             <div className="row books-show">
