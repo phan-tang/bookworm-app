@@ -7,7 +7,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 
 function Home() {
 
-    const [perRow, setPerRow] = useState([]);
+    const [perRow, setPerRow] = useState(4);
     const [key, setKey] = useState('recommended-books');
     const [onSaleBooks, setOnSaleBooks] = useState([]);
     const [recommendedBooks, setRecommendedBooks] = useState([]);
@@ -43,7 +43,6 @@ function Home() {
     //ComponentDidMount
     useEffect(() => {
         const abort = new AbortController();
-        setPerRow(4);
         fetchOnSaleBooksData();
         fetchRecommendedBooksData();
         fetchPopularBooksData();
