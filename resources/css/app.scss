@@ -1,6 +1,5 @@
 body {
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	.container{
 		margin-top: 100px;
 	}
@@ -62,5 +61,10 @@ body {
 
 	.button-in-list:hover{
 		color: #9C4343;
+	}
+
+	.button-in-list.active{
+		color: #9C4343;
+		font-weight: bold;
 	}
 }
