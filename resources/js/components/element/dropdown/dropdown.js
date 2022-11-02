@@ -3,7 +3,7 @@ function Dropdown(props) {
 
     const [show, setShow] = useState(props.fields.show);
 
-    //Function to handle click button apply sort or show for list of books
+    //Function used to handle click button apply sort or show for list of books
     const handleClickButtonItem = (field) => {
         setShow(field.display);
         props.handleParams(field.params);

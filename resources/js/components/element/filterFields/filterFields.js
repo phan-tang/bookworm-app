@@ -5,7 +5,7 @@ function FilterFields(props) {
 
     const [filterValue, setFilterValue] = useState({});
 
-    //Function to getField
+    //Function used to getField
     const getField = (field) => {
         if (field == "star") {
             return field;
@@ -13,14 +13,14 @@ function FilterFields(props) {
         return field + "_id";
     }
 
-    //Function to display text
+    //Function used to display text
     const displayText = (text) => {
         return text.split(" ").map((word) => {
             return word[0].toUpperCase() + word.substring(1);
         }).join(" ");
     }
 
-    //Function to get class name of item
+    //Function used to get class name of item
     const getClassName = (id, field) => {
         let filterField = getField(field);
         let name = "button-in-list";
@@ -30,7 +30,7 @@ function FilterFields(props) {
         return name;
     }
 
-    //Function to display delete field button
+    //Function used to display delete field button
     const displayDeleteButton = (name, field) => {
         if (name.includes("active")) {
             return (<button className="col-2 button delete-select-value" onClick={() => handleClickButtonDelete(field)}>X</button >);
@@ -38,7 +38,7 @@ function FilterFields(props) {
         return (<></>);
     }
 
-    //Function to handle click button delete filter field for list of books
+    //Function used to handle click button delete filter field for list of books
     const handleClickButtonClearAll = () => {
 
         //Call function to apply filter with params
@@ -53,7 +53,7 @@ function FilterFields(props) {
         console.log(params)
     }
 
-    //Function to handle click button delete filter field for list of books
+    //Function used to handle click button delete filter field for list of books
     const handleClickButtonDelete = (field) => {
         let filterField = getField(field);
 
@@ -69,7 +69,7 @@ function FilterFields(props) {
         props.handleParams(params);
     }
 
-    //Function to handle click button apply filter for list of books
+    //Function used to handle click button apply filter for list of books
     const handleClickButtonItem = (id, field) => {
         let filterField = getField(field);
 
