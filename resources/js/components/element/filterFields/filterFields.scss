@@ -1,13 +1,35 @@
 .filter-book {
-    h6{
-        font-weight: bold;
+
+    .filter-by-header{
+        display: flex;
+        align-items: center;
+        h6{
+            font-weight: bold;
+        }
+
+        .clear-all{
+            display: flex;
+            justify-content: flex-end;
+            button{
+                font-size: 12px;
+            }
+        }
     }
-  
+
     .card{
         margin-top: 20px;
         .card-title{
             font-weight: bold;
             color: #9C4343;
         }
+
+        .filter-item{
+            display: flex;
+            align-items: center;
+            .delete-select-value{
+                padding: 5px;
+                font-size: 15px;
+            }
+        }   
     }
 }
