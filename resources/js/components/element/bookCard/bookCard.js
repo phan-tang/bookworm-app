@@ -27,7 +27,7 @@ function BookCard(props) {
 
     return (
         <>
-            <div className="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 {/* <Link> */}
                 <div className="card book-card">
                     {displayBookCoverImage(props.bookCard)}
