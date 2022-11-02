@@ -1,6 +1,5 @@
 import React from 'react';
 import 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './footer.scss';
 import bookworm_icon from '../../../../assets/bookworm_icon.svg';
 
