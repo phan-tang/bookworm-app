@@ -18,7 +18,7 @@ class BookRepository extends BaseRepository
     public function getBookDetail($id)
     {
         try {
-            $book = Book::getAllBookDetails()->find($id);
+            $book = Book::getAllBookDetails()->selectFinalPrice()->find($id);
             return new BookDetailsResource($book);
         } catch (\Exception $e) {
             return $e->getMessage();
