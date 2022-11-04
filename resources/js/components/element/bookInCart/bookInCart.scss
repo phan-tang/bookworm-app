@@ -6,6 +6,10 @@
     .product-in-cart-name{
         display: flex;
         align-items: center;
+        .book-title{
+            height: 50px;
+            overflow: auto;
+        }
         .default-book-cover-photo{
             height: 150px;
             width: 120px;

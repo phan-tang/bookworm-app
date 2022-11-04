@@ -41,7 +41,7 @@ function BookInCart(props) {
                 <th scope="row" className="product-in-cart-name">
                     {displayBookCoverImage(props.book)}
                     <span>
-                        <h5>{props.book.title}</h5>
+                        <h5 className="book-title">{props.book.title}</h5>
                         <h6>{props.book.author}</h6>
                     </span>
                 </th>
