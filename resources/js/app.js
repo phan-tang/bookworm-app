@@ -38,6 +38,8 @@ import book9 from '../assets/bookcover/book9.jpg';
 import book10 from '../assets/bookcover/book10.jpg';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     return (
@@ -53,6 +55,17 @@ function App() {
                 </Routes>
             </div>
             <Footer></Footer>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </HashRouter>
     );
 }
