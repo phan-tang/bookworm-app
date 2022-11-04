@@ -40,8 +40,23 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 function App() {
+
+    const [bookCart, setBookCart] = useState([]);
+    // const [numberBooks, setNumberBooks] = useState([]);
+
+    // const getNumberOfBooks = () => {
+    //     let numberOfBooks = 0;
+    //     if (bookCart != []) {
+    //         bookCart.forEach((book) => {
+    //             numberOfBooks += book.quantity;
+    //         })
+    //     }
+    //     setNumberBooks(numberOfBooks);
+    // }
+
     return (
         <HashRouter>
             <Header></Header>
@@ -50,8 +65,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/shop" element={<Shop />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/product/:id" element={<Product />} />
+                    <Route path="/cart" element={<Cart cart={bookCart} />} />
+                    <Route path="/product/:id" element={<Product cart={bookCart} setCart={setBookCart} />} />
                 </Routes>
             </div>
             <Footer></Footer>

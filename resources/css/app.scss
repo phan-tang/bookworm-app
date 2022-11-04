@@ -67,4 +67,12 @@ body {
 		color: #9C4343;
 		font-weight: bold;
 	}
+
+	.plus-minus-number-input{
+		input{
+			display: inline;
+			text-align: center;
+			border: 2px solid black;
+		}
+	}
 }

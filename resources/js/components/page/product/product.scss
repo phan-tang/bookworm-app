@@ -1,0 +1,67 @@
+.product-overview{ 
+    .card{
+        margin-top: 20px;
+        .product-information{ 
+            .product-image{
+                width: 100%;
+                border-radius: 8px;
+            }
+            .produc-author{
+                padding-top: 10px;
+                text-align: right;
+            }
+        }
+        .product-describe{
+            padding: 20px;
+        }
+
+        .card-title{
+            font-weight: bold;
+            color: #9C4343;
+        } 
+
+        .card-body{
+            button{
+                width: 100%;
+            }
+            .describe-reviews-show-content{
+                display: flex;
+                align-items: center;
+            }
+
+            .edit-reviews-show-content{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+            .filter-field-review{
+                border: none;
+                background-color: white;
+                width: auto;
+            }
+            .filter-field-review.active{
+                border: none;
+                color: #9C4343;
+                background-color: white;
+                width: auto;
+            }
+        }
+    }
+    .product-price{
+        .card-body{
+            .plus-minus-number-input{
+                padding: 15px;
+                .product-quantity{
+                    text-align: center;
+                    border: solid black 1px;
+                }
+
+                button{
+                    font-size: 17px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
