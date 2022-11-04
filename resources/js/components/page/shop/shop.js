@@ -15,10 +15,10 @@ function Shop() {
     const sortFields = {
         "show": "Sort by on sale",
         "values": [
-            { "display": "Sort by on sale", "params": { "sort": "on_sale" } },
-            { "display": "Sort by popularity", "params": { "sort": "popular" } },
-            { "display": "Sort by price low to high", "params": { "sort": "price", "order": "asc" } },
-            { "display": "Sort by price high to low", "params": { "sort": "price", "order": "desc" } },
+            { "display": "Sort by on sale", "params": { "sort": "on_sale", "page": 1 } },
+            { "display": "Sort by popularity", "params": { "sort": "popular", "page": 1 } },
+            { "display": "Sort by price low to high", "params": { "sort": "price", "order": "asc", "page": 1 } },
+            { "display": "Sort by price high to low", "params": { "sort": "price", "order": "desc", "page": 1 } },
         ],
     };
 
@@ -26,10 +26,10 @@ function Shop() {
     const showFields = {
         "show": 'Show 15',
         "values": [
-            { "display": "Show 25", "params": { "per_page": 25 } },
-            { "display": "Show 20", "params": { "per_page": 20 } },
-            { "display": "Show 15", "params": { "per_page": 15 } },
-            { "display": "Show 5", "params": { "per_page": 5 } },
+            { "display": "Show 25", "params": { "per_page": 25, "page": 1 } },
+            { "display": "Show 20", "params": { "per_page": 20, "page": 1 } },
+            { "display": "Show 15", "params": { "per_page": 15, "page": 1 } },
+            { "display": "Show 5", "params": { "per_page": 5, "page": 1 } },
         ],
     };
 
@@ -95,11 +95,14 @@ function Shop() {
     }
 
     //Function used to display describe books show content
-    const displayDescribeBookShowContent = () => {
+    const displayDescribeBooksShowContent = () => {
         if (books != null) {
-            return (
-                <h6>Showing {books.from}-{books.to} of {books.total} books</h6>
-            );
+            if (books.total) {
+                return (
+                    <h6>Showing {books.from}-{books.to} of {books.total} books</h6>
+                );
+            }
+            return (<h6>Showing 0 books</h6>);
         }
         return (<></>);
     }
@@ -147,7 +150,7 @@ function Shop() {
                         <div className="col-xl-10 col-lg-10 col-md-12 col-sm-12 shop-books-show">
                             <div className="row">
                                 <div className="col-6 describe-books-show-content">
-                                    {displayDescribeBookShowContent()}
+                                    {displayDescribeBooksShowContent()}
                                 </div>
                                 <div className="col-6 edit-books-show-content">
                                     <Dropdown fields={sortFields} handleParams={handleChangeParams}></Dropdown>
