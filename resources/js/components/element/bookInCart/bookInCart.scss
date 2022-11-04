@@ -1,0 +1,34 @@
+.product-in-cart-detail{ 
+    h5{
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .product-in-cart-name{
+        display: flex;
+        align-items: center;
+        img{
+            display: inline;
+            padding: 10px;
+            height: 150px;
+            border-radius: 8px;
+        }
+        h6{
+            font-size: 15px;
+        }
+    }
+
+    .plus-minus-number-input{
+        display: flex;
+        align-items: center;
+        height: 30px;
+        .product-quantity{
+            width: 60%;
+            height: 100%;
+            text-align: center;
+            border: solid black 1px;
+        }
+        button{
+            height: 100%;
+        }
+    }
+}
