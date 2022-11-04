@@ -3,6 +3,17 @@ import './pagination.scss';
 
 function Pagination(props) {
 
+    //Function used to get pages for pagination
+    const getShowPage = () => {
+        if (props.current == 1) {
+            return props.links.slice(1, props.links.length - 1).slice(0, 3);
+        }
+        if (props.current == props.links.length - 2) {
+            return props.links.slice(1, props.links.length - 1).slice(props.current - 3, props.curren);
+        }
+        return props.links.slice(1, props.links.length - 1).slice(props.current - 2, props.current + 1);
+    }
+
     //Function used to change page
     const handleClickButtonPage = (id) => {
         props.handleParams({ "page": id });
@@ -31,26 +42,21 @@ function Pagination(props) {
         return name;
     }
 
-    //Function used to get label show for item
-    const getLabel = (label) => {
-        if (label.includes("Previous")) {
-            label = "Previous";
-        }
-        if (label.includes("Next")) {
-            label = "Next";
-        }
-        return label;
-    }
-
     return (
         <ul className="pagination">
-            {props.links.map((link) => {
+            <li className={getClassName(props.links[0])} key={"page_previous"}>
+                <button className="page-link" onClick={() => handleClickButtonPage(getPage(props.links[0].label))}>Previous</button>
+            </li>
+            {getShowPage().map((link) => {
                 return (
-                    <li className={getClassName(link)} key={"page_" + getLabel(link.label)}>
-                        <button className="page-link" onClick={() => handleClickButtonPage(getPage(link.label))}>{getLabel(link.label)}</button>
+                    <li className={getClassName(link)} key={"page_" + link.label}>
+                        <button className="page-link" onClick={() => handleClickButtonPage(getPage(link.label))}>{link.label}</button>
                     </li>
                 );
             })}
+            <li className={getClassName(props.links[props.links.length - 1])} key={"page_next"}>
+                <button className="page-link" onClick={() => handleClickButtonPage(getPage(props.links[props.links.length - 1].label))}>Next</button>
+            </li>
         </ul>
     );
 }

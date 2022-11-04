@@ -6,14 +6,21 @@
     li.page-item.active button{
         background-color: #9C4343;
         color: white;
+        width: auto;
         border: 1px solid #9C4343;
     }
 
-    button{
+    li.page-item.disabled button{
+        width: auto;
+        color: gray;
+    }
+
+    li.page-item button{
+        width: auto;
         color: black;
     }
 
-    button:hover{
+    li.page-item button:hover{
         color: #E69393;
     }
 }
