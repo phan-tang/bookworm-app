@@ -38,30 +38,4 @@ class ReviewAPIController extends Controller
     {
         return $this->reviewRepository->getBookReviews($request);
     }
-
-    /**
-     * Update the specified review in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \App\Http\Resources\ReviewResource
-     */
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'review_title' => 'required', 'rating_start' => 'required',
-        ]);
-        return $this->reviewRepository->updateBookReview($request, $id);
-    }
-
-    /**
-     * Remove the specified review from storage.
-     *
-     * @param  int  $id
-     * @return \App\Http\Resources\ReviewResource
-     */
-    public function destroy($id)
-    {
-        return $this->reviewRepository->deleteBookReview($id);
-    }
 }

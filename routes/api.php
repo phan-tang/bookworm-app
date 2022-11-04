@@ -24,14 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::resource('book', BookAPIController::class)->except([
-        'show', 'index' //admin only
-    ]);
-    Route::resource('review', ReviewAPIController::class)->only([
-        'update', 'destroy' //admin only
-    ]);
-
-    Route::get('/users', [UserAPIController::class, 'index']); //admin only
     Route::get('/logout', [UserAPIController::class, 'logout']);
 
     Route::post('/place_order', [OrderAPIController::class, 'store']);

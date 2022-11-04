@@ -15,16 +15,6 @@ class UserAPIController extends Controller
     }
 
     /**
-     * Display a listing of the user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return $this->userRepository->getUsers();
-    }
-
-    /**
      * Login function.
      * 
      * @param  \Illuminate\Http\Request  $request

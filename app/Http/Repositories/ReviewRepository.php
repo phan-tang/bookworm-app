@@ -60,44 +60,6 @@ class ReviewRepository extends BaseRepository
     }
 
     /**
-     * Update the specified review in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \App\Http\Resources\ReviewResource
-     */
-    public function updateBookReview($request, $id)
-    {
-        try {
-            $review = Review::find($id);
-            $review->review_title = $request->input('review_title');
-            $review->review_details = $request->input('review_details');
-            $review->rating_start = $request->input('rating_start');
-            $review->save();
-            return new ReviewResource($review);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    /**
-     * Remove the specified review from storage.
-     *
-     * @param  int  $id
-     * @return \App\Http\Resources\ReviewResource
-     */
-    public function deleteBookReview($id)
-    {
-        try {
-            $review = Review::find($id);
-            $review->delete();
-            return new ReviewResource($review);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    /**
      * Get average star of book reviews.
      *
      * @param  \Illuminate\Database\Eloquent\Collection  $data

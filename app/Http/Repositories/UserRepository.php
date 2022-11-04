@@ -8,20 +8,6 @@ use Illuminate\Http\Request;
 
 class UserRepository extends BaseRepository
 {
-    /**
-     * Display a listing of the user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getUsers()
-    {
-        try {
-            $users = User::all();
-            return response()->json($users);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
 
     /**
      * Login function.
