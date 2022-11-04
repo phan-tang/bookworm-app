@@ -47,6 +47,7 @@ class ReviewRepository extends BaseRepository
     {
         try {
             $review = new Review();
+            $review->book_id = $request->input('book_id');
             $review->review_title = $request->input('review_title');
             $review->review_details = $request->input('review_details');
             $review->rating_start = $request->input('rating_start');
