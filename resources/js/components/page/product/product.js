@@ -109,6 +109,17 @@ function Product(props) {
         return (<></>);
     }
 
+    //Function used to display book cover photo
+    const displayBookCoverImage = (book) => {
+        console.log(book)
+        if (book.book_cover_photo != null) {
+            return (<img className="product-image card-img-top" src={'images/' + book.book_cover_photo + '.jpg'} />);
+        }
+        return (
+            <div className='product-image default-book-cover-photo'></div>
+        );
+    }
+
     //Function used to display describe book information
     const displayBookInformation = () => {
         if (book != null) {
@@ -116,7 +127,7 @@ function Product(props) {
                 <div className="card">
                     <div className="row product-information">
                         <div className="col-4 product-image-author">
-                            <img className="product-image" src={"images/" + book.book_cover_photo + ".jpg"} />
+                            {displayBookCoverImage(book)}
                             <p className="produc-author">By (author) | {book.author.author_name}</p>
                         </div>
                         <div className="col-8 product-describe">

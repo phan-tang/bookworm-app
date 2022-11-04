@@ -17,6 +17,16 @@ function BookInCart(props) {
         }
     }
 
+    //Function used to display book cover photo
+    const displayBookCoverImage = (book) => {
+        if (book.book_cover_photo != null) {
+            return (<img src={'images/' + book.book_cover_photo + '.jpg'} className="card-img-top" />);
+        }
+        return (
+            <span className='default-book-cover-photo'></span>
+        );
+    }
+
     //Function used to display book previous price
     const displayPreviousPrice = () => {
         if (props.book.final_price != props.book.previous_price) {
@@ -29,7 +39,7 @@ function BookInCart(props) {
         <>
             <tr className="product-in-cart-detail">
                 <th scope="row" className="product-in-cart-name">
-                    <img src={"images/" + props.book.book_cover_photo + ".jpg"}></img>
+                    {displayBookCoverImage(props.book)}
                     <span>
                         <h5>{props.book.title}</h5>
                         <h6>{props.book.author}</h6>

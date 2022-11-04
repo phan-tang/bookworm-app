@@ -6,9 +6,17 @@
     .product-in-cart-name{
         display: flex;
         align-items: center;
+        .default-book-cover-photo{
+            height: 150px;
+            width: 120px;
+            background-color: gray;
+            border-radius: 8px;
+            padding: 10px;
+        }
         img{
             display: inline;
             padding: 10px;
+            width: 120px;
             height: 150px;
             border-radius: 8px;
         }

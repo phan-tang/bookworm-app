@@ -2,8 +2,14 @@
     .card{
         margin-top: 20px;
         .product-information{ 
+            .default-book-cover-photo{
+                height: 300px;
+                background-color: gray;
+            }
+
             .product-image{
                 width: 100%;
+                height: 300px;
                 border-radius: 8px;
             }
             .produc-author{
