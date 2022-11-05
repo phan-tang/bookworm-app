@@ -111,7 +111,6 @@ function Product(props) {
 
     //Function used to display book cover photo
     const displayBookCoverImage = (book) => {
-        console.log(book)
         if (book.book_cover_photo != null) {
             return (<img className="product-image card-img-top" src={'images/' + book.book_cover_photo + '.jpg'} />);
         }
@@ -174,7 +173,7 @@ function Product(props) {
                                 <button onClick={() => handleChangeQuantity("add")}>+</button>
                             </div>
                         </div>
-                        <button className="button" onClick={() => handleAddToCart()}>Add to cart</button>
+                        <button className="button" onClick={() => handleClickButtonAddToCart()}>Add to cart</button>
                     </div>
                 </div>
             );
@@ -263,10 +262,17 @@ function Product(props) {
     }
 
     //Function used to add book to cart
-    const handleAddToCart = () => {
+    const handleClickButtonAddToCart = () => {
         let cart = props.cart;
-        cart.push({ "id": id, "title": book.book_title, "author": book.author.author_name, "book_cover_photo": book.book_cover_photo, "quantity": quantity, "final_price": book.final_price, "previous_price": book.book_price });
+        const bookInCart = cart.find(({ book_id }) => book_id == id);
+        if (bookInCart == undefined) {
+            cart.push({ "book_id": id, "title": book.book_title, "author": book.author.author_name, "book_cover_photo": book.book_cover_photo, "quantity": quantity, "final_price": book.final_price, "previous_price": book.book_price });
+        }
+        else {
+            bookInCart.quantity += quantity;
+        }
         toast.success("Added to cart!")
+        props.setNumberOfBooks();
         props.setCart(cart);
     }
 
