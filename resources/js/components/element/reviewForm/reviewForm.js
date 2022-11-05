@@ -7,7 +7,7 @@ function CreateReviewForm(props) {
     const inputDetail = useRef();
     const inputStar = useRef();
 
-    const handleSubmitForm = (event) => {
+    const handleClickButtonSubmitForm = () => {
         let review = { 'book_id': props.book_id, 'review_title': inputTitle.current.value, 'review_details': inputDetail.current.value, 'rating_start': inputStar.current.value };
         if (review.review_title != "") {
             axios.post('api/create_review', review)
@@ -45,7 +45,7 @@ function CreateReviewForm(props) {
                     <option value="1">1 Star</option>
                 </select>
             </div>
-            <button className="button" onClick={() => handleSubmitForm()}>Submit Review</button>
+            <button className="button" onClick={() => handleClickButtonSubmitForm()}>Submit Review</button>
         </>
     );
 }

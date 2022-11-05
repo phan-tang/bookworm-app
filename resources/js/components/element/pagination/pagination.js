@@ -3,6 +3,11 @@ import './pagination.scss';
 
 function Pagination(props) {
 
+    //Function used to change page
+    const handleClickButtonPage = (id) => {
+        props.handleParams({ "page": id });
+    }
+
     //Function used to get pages for pagination
     const getShowPage = () => {
         if (props.current == 1) {
@@ -12,11 +17,6 @@ function Pagination(props) {
             return props.links.slice(1, props.links.length - 1).slice(props.current - 3, props.curren);
         }
         return props.links.slice(1, props.links.length - 1).slice(props.current - 2, props.current + 1);
-    }
-
-    //Function used to change page
-    const handleClickButtonPage = (id) => {
-        props.handleParams({ "page": id });
     }
 
     //Function used to get id page for item

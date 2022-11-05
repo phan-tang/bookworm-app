@@ -13,13 +13,6 @@ function FilterFields(props) {
         return field + "_id";
     }
 
-    //Function used to display text
-    const displayText = (text) => {
-        return text.split(" ").map((word) => {
-            return word[0].toUpperCase() + word.substring(1);
-        }).join(" ");
-    }
-
     //Function used to get class name of item
     const getClassName = (id, field) => {
         let filterField = getField(field);
@@ -28,6 +21,13 @@ function FilterFields(props) {
             name += " active";
         }
         return name;
+    }
+
+    //Function used to display text
+    const displayText = (text) => {
+        return text.split(" ").map((word) => {
+            return word[0].toUpperCase() + word.substring(1);
+        }).join(" ");
     }
 
     //Function used to display delete field button
