@@ -125,11 +125,11 @@ function Product(props) {
             return (
                 <div className="card">
                     <div className="row product-information">
-                        <div className="col-4 product-image-author">
+                        <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 product-image-author">
                             {displayBookCoverImage(book)}
                             <p className="produc-author">By (author) | {book.author.author_name}</p>
                         </div>
-                        <div className="col-8 product-describe">
+                        <div className="col-xl-8 col-lg-8 col-md-8 col-sm-6 col-xs-6 product-describe">
                             <h5 className="card-title">{book.book_title}</h5>
                             <p className="card-text">{book.book_summary}</p>
                         </div>
@@ -271,7 +271,7 @@ function Product(props) {
         else {
             bookInCart.quantity += quantity;
         }
-        toast.success("Added to cart!")
+        toast.success("Added to cart!");
         props.setNumberOfBooks();
         props.setCart(cart);
     }
