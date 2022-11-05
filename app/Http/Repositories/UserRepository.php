@@ -37,7 +37,7 @@ class UserRepository extends BaseRepository
                     // if ($password == $user->password) {
                     $user->remember_token = $user->createToken('authToken')->plainTextToken;
                     $status = 200;
-                    $message = 'Logged in successfully';
+                    $message = 'Logged in successfully!';
                 }
             }
             return response()->json([
@@ -63,7 +63,7 @@ class UserRepository extends BaseRepository
             $request->user()->currentAccessToken()->delete();
             return response()->json([
                 'status_code' => 200,
-                'message' => 'Logged out'
+                'message' => 'Logged out successfully!'
             ]);
         } catch (\Exception $e) {
             return $e->getMessage();
