@@ -1,0 +1,32 @@
+.modal-content{
+    .modal-header{
+        .modal-title.h4{
+            color: #9C4343;
+        }
+        .close{
+            border-radius: 8px;
+		    border: 1px solid white;
+            background-color: #9C4343;
+            color: white;
+            font-weight: bold;
+        }
+        .button:hover{
+            color: #9C4343;
+            background-color: white;
+            }
+    }
+    .modal-body{
+        label{
+            color: #9C4343;
+        }
+    }
+    .modal-footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .button{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+}
