@@ -34,4 +34,9 @@
             color: black;
         }
     }
-  }
+}
+
+.book-card:hover{
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px gray, 0 4px 8px gray;
+}
