@@ -6,15 +6,15 @@ function BookInCart(props) {
 
     const [quantity, setQuantity] = useState(props.book.quantity);
 
-    //Function used to apply sort and filter for list of books
+    //Function used to handle change quantity of books in cart
     const handleChangeQuantity = (action) => {
-        if (action == "subtract" && quantity != 1) {
+        if (action == "subtract" && quantity > 0) {
             setQuantity(quantity - 1);
-
         }
-        if (action == "add" && quantity != 8) {
+        if (action == "add" && quantity < 8) {
             setQuantity(quantity + 1);
         }
+        props.handleBooksInCart(props.book.book_id, action);
     }
 
     //Function used to display book cover photo
