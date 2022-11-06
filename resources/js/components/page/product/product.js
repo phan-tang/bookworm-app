@@ -273,6 +273,7 @@ function Product(props) {
         }
         toast.success("Added to cart!");
         props.setNumberOfBooks();
+        props.setCartTotalPrice();
         props.setCart(cart);
     }
 
