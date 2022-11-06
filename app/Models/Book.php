@@ -149,7 +149,11 @@ class Book extends Model
     public function scopeDisplayBooks($query, $limit, $perPage)
     {
         return $query->when($limit != null, function ($query) use ($limit) {
-            return $query->limit($limit)->get();
+            return $query->when($limit != "all", function ($query) use ($limit) {
+                return $query->limit($limit)->get();
+            })->when($limit == "all", function ($query) {
+                return $query->get();
+            });
         })
             ->when($limit == null, function ($query) use ($perPage) {
                 return $query->paginate($perPage);
