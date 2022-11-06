@@ -26,6 +26,7 @@ import Cart from './components/page/cart/cart';
 import Product from './components/page/product/product';
 import Header from './components/element/header/header';
 import Footer from './components/element/footer/footer';
+import Login from './components/element/login/login';
 import book1 from '../assets/bookcover/book1.jpg';
 import book2 from '../assets/bookcover/book2.jpg';
 import book3 from '../assets/bookcover/book3.jpg';
@@ -40,35 +41,74 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
-    const [bookCart, setBookCart] = useState([]);
-    // const [numberBooks, setNumberBooks] = useState([]);
+    const [bookCart, setBookCart] = useState([{ "book_id": 657, "title": "Test order fail", "author": "Oliz", "book_cover_photo": null, "quantity": 3, "final_price": 30, "previous_price": 30 }]);
+    const [numberBooks, setNumberBooks] = useState(0);
+    const [cartTotal, setCartTotal] = useState(0);
+    const [user, setUser] = useState(null);
+    const [modalShow, setModalShow] = useState(false);
 
-    // const getNumberOfBooks = () => {
-    //     let numberOfBooks = 0;
-    //     if (bookCart != []) {
-    //         bookCart.forEach((book) => {
-    //             numberOfBooks += book.quantity;
-    //         })
-    //     }
-    //     setNumberBooks(numberOfBooks);
-    // }
+    //Function used to set number of books in cart
+    const setNumberOfBooks = () => {
+        let numberOfBooks = 0;
+        if (bookCart != []) {
+            bookCart.forEach((book) => {
+                numberOfBooks += book.quantity;
+            })
+        }
+        setNumberBooks(numberOfBooks);
+    }
+
+    //Function used to get cart total
+    const setCartTotalPrice = () => {
+        let total = 0;
+        if (bookCart != []) {
+            bookCart.forEach(bookInCart => {
+                total += bookInCart.final_price * bookInCart.quantity;
+            });
+        }
+        setCartTotal(total);
+    }
+
+    //Function used to handle change books in cart
+    const handleChangeBooksInCart = (cart, quantity, final_price) => {
+        setBookCart(cart);
+        setCartTotal(cartTotal + final_price);
+        setNumberBooks(numberBooks + quantity);
+    }
+
+    //ComponentDidMount
+    useEffect(() => {
+        const abort = new AbortController();
+        let user = JSON.parse(localStorage.getItem('user'));
+        if (user != null) {
+            setUser(user);
+        }
+        setCartTotalPrice();
+        setNumberOfBooks();
+        return () => abort.abort();
+    }, []);
 
     return (
         <HashRouter>
-            <Header></Header>
+            <Header userInformation={user} setUserInformation={setUser} numberOfBooks={numberBooks} setShow={setModalShow}></Header>
             <div className='container-fluid p-0'>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/shop" element={<Shop />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/cart" element={<Cart cart={bookCart} />} />
-                    <Route path="/product/:id" element={<Product cart={bookCart} setCart={setBookCart} />} />
+                    <Route path="/cart" element={<Cart userInformation={user} setShow={setModalShow} cart={bookCart} numberOfBooks={numberBooks} totalPrice={cartTotal} handleChangeBooksInCart={handleChangeBooksInCart} />} />
+                    <Route path="/product/:id" element={<Product cart={bookCart} setCart={setBookCart} setCartTotalPrice={setCartTotalPrice} setNumberOfBooks={setNumberOfBooks} />} />
                 </Routes>
             </div>
+            <Login
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                setUser={setUser}
+            ></Login>
             <Footer></Footer>
             <ToastContainer
                 position="top-center"

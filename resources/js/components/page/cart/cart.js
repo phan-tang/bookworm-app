@@ -1,37 +1,123 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import BookInCart from '../../element/bookInCart/bookInCart';
 import './cart.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Cart(props) {
 
-    const [cartToTal, setCartTotal] = useState(0);
+    const [allBooks, setAllBooks] = useState([]);
+    let navigate = useNavigate();
 
     //Function used to display book in cart
     const displayBookInCart = () => {
         if (props.cart != []) {
             return (
                 props.cart.map((bookInCart) => {
-                    return (<BookInCart book={bookInCart} key={"book_in_cart_" + bookInCart.id} totalPrice={cartToTal} setToTalPrice={setCartTotal}></BookInCart>);
+                    return (<BookInCart book={bookInCart} key={"book_in_cart_" + bookInCart.book_id} handleBooksInCart={handleChangeBooksQuantityInCart}></BookInCart>);
                 })
             );
         }
-        return (<tr className="product-in-cart-detail"><h3>There is nothing in cart</h3></tr>);
+        return (<></>);
     }
 
-    const getCartTotal = () => {
-        let total = 0;
-        if (props.cart != []) {
-            props.cart.forEach(bookInCart => {
-                total += bookInCart.final_price * bookInCart.quantity;
-            });
+    //Function used to handle change book's quantity in cart
+    const handleChangeBooksQuantityInCart = (id, action) => {
+        let cart = props.cart;
+        let quantity = 0;
+        const bookInCart = cart.find(({ book_id }) => book_id == id);
+        if (action == "subtract") {
+            if (bookInCart.quantity == 1) {
+                if (window.confirm("You want to delete this book from cart?")) {
+                    cart = cart.filter((book) => book.book_id != id);
+                }
+            }
+            bookInCart.quantity -= 1;
+            quantity = -1;
         }
-        setCartTotal(total);
+        else {
+            if (bookInCart.quantity < 8) {
+                bookInCart.quantity += 1;
+                quantity = 1;
+            }
+        }
+        props.handleChangeBooksInCart(cart, quantity, quantity * bookInCart.final_price);
+    }
+
+    //Function used to handle click button place order
+    const handleClickButtonPlaceOrder = () => {
+        if (props.userInformation == null) {
+            props.setShow(true);
+        }
+        else {
+            if (props.cart.length != 0) {
+                let order_items = [];
+                let filter_id = [];
+                let quantityDeleteBooks = 0;
+                let priceDeleteBooks = 0;
+                props.cart.forEach((bookInCart) => {
+                    let book = allBooks.find((item) => item.id == bookInCart.book_id);
+                    if (book != null && book.final_price == bookInCart.final_price) {
+                        order_items.push({ "id": bookInCart.book_id, "final_price": bookInCart.final_price, "quantity": bookInCart.quantity });
+                    }
+                    else {
+                        filter_id.push(bookInCart.book_id);
+                        priceDeleteBooks -= bookInCart.quantity * bookInCart.final_price;
+                        quantityDeleteBooks -= bookInCart.quantity;
+                    }
+                });
+                let cart = props.cart.filter((book) => filter_id.includes(book.book_id) == false);
+                if (quantityDeleteBooks == 0) {
+                    handleCreateOrder(order_items);
+                }
+                else {
+                    props.handleChangeBooksInCart(cart, quantityDeleteBooks, priceDeleteBooks);
+                    toast.error("Some books are not unavailable now!");
+                }
+            }
+            else {
+                toast.warning("There is nothing in cart!");
+            }
+        }
+    }
+
+    //Function used to create order
+    const handleCreateOrder = async (order_items) => {
+        let accessToken = props.userInformation.remember_token;
+        console.log(order_items);
+        await axios.post('api/place_order', { "order_items": order_items }, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                if (response.status == 201) {
+                    props.handleChangeBooksInCart([], -props.numberOfBooks, -props.totalPrice);
+                    toast.success("Ordered successfully!");
+                    return navigate("/");
+                }
+                else {
+                    toast.error("Order failed!");
+                }
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
+    //Function used to get books in database
+    const fetchAllBooksData = async () => {
+        await axios.get('api/books?limit=all')
+            .then(({ data }) => {
+                setAllBooks(data.resource);
+            })
+            .catch(error => console.log(error));
     }
 
     //ComponentDidMount
     useEffect(() => {
         const abort = new AbortController();
-        getCartTotal();
+        fetchAllBooksData();
         return () => abort.abort();
     }, []);
 
@@ -43,7 +129,7 @@ function Cart(props) {
                 {/* <!-- Part Title --> */}
                 <div className="row">
                     <div className="part-title">
-                        <p>Your cart: 0 items</p>
+                        <p>Your cart: {props.numberOfBooks} items</p>
                     </div>
                 </div>
                 <div className="line"></div>
@@ -78,8 +164,8 @@ function Cart(props) {
                         <div className="card cart-totals">
                             <h5 className="card-header">Cart Totals</h5>
                             <div className="card-body">
-                                <h5 className="cart-totals-price">${cartToTal}</h5>
-                                <button className="button">Place order</button>
+                                <h5 className="cart-totals-price">${props.totalPrice}</h5>
+                                <button className="button" onClick={() => handleClickButtonPlaceOrder()}>Place order</button>
                             </div>
                         </div>
                     </div>

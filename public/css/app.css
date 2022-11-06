@@ -1,5 +1,5 @@
 body {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 body .container {
   margin-top: 100px;
@@ -15,8 +15,8 @@ body .part-title p {
   color: #9C4343;
 }
 body .page-padding-content {
-  padding-left: 120px;
-  padding-right: 120px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 body .button {
   background-color: #9C4343;
@@ -50,4 +50,13 @@ body .button-in-list {
 }
 body .button-in-list:hover {
   color: #9C4343;
+}
+body .button-in-list.active {
+  color: #9C4343;
+  font-weight: bold;
+}
+body .plus-minus-number-input input {
+  display: inline;
+  text-align: center;
+  border: 2px solid black;
 }
