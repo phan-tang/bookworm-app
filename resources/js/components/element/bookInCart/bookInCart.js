@@ -20,7 +20,7 @@ function BookInCart(props) {
     //Function used to display book cover photo
     const displayBookCoverImage = (book) => {
         if (book.book_cover_photo != null) {
-            return (<img src={'images/' + book.book_cover_photo + '.jpg'} className="card-img-top" />);
+            return (<img src={'images/' + book.book_cover_photo + '.jpg'} />);
         }
         return (
             <span className='default-book-cover-photo'></span>
