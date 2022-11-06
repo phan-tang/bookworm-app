@@ -33,7 +33,7 @@ class OrderRepository extends BaseRepository
                     'price' => $value['final_price'],
                     'quantity' => $value['quantity'],
                 ];
-                $order_amount = $value['quantity'] * $value['final_price'];
+                $order_amount += $value['quantity'] * $value['final_price'];
             }
 
             DB::transaction(function () use ($user_id, $order_amount, $order_items) {
