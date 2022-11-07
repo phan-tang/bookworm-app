@@ -2,6 +2,9 @@
     h5{
         font-weight: bold;
         font-size: 18px;
+        @media screen and (max-width: 768px){
+            font-size: 15px;
+        }
     }
     .product-in-cart-name{
         display: flex;
@@ -23,28 +26,41 @@
             width: 120px;
             height: 150px;
             border-radius: 8px;
+            @media screen and (max-width: 768px){
+                width: 80px;
+                height: 100px;
+            }
         }
         h6{
             font-size: 15px;
+            @media screen and (max-width: 768px){
+                font-size: 12px;
+            }
         }
     }
     .product-in-cart-price{
         text-align: center;
     }
 
-    .plus-minus-number-input{
-        display: flex;
-        align-items: center;
-        height: 30px;
-        .product-quantity{
-            width: 60%;
-            height: 100%;
-            text-align: center;
-            border: solid black 1px;
-        }
-        button{
-            height: 100%;
-            border: 1px solid black;
+    .product-in-cart-quantity{
+        .plus-minus-number-input{
+            display: flex;
+            align-items: center;
+            height: 30px;
+            .product-quantity{
+                width: 60%;
+                height: 100%;
+                text-align: center;
+                border: solid black 1px;
+                @media screen and (max-width: 768px){
+                    width: 30%;
+                    height: 100%;
+                }
+            }
+            button{
+                height: 100%;
+                border: 1px solid black;
+            }
         }
     }
     .product-in-cart-price{
