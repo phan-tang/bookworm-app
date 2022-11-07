@@ -10,21 +10,26 @@ function Login(props) {
     //Function used to login
     const handleLogin = async () => {
         let user = { "email": inputEmail.current.value, "password": inputPassword.current.value };
-        await axios.post('api/login', user)
-            .then((response) => {
-                if (response.data.status_code == 200) {
-                    let user = JSON.stringify(response.data);
-                    localStorage.setItem('user', user);
-                    toast.success(response.data.message);
-                    props.setUser(response.data);
-                    props.onHide();
-                }
-                else {
-                    toast.error(response.data.message);
-                }
-            }, (error) => {
-                console.log(error);
-            });
+        if (user['email'] != "" && user['password'] != "") {
+            await axios.post('api/login', user)
+                .then((response) => {
+                    if (response.data.status_code == 200) {
+                        let user = JSON.stringify(response.data);
+                        localStorage.setItem('user', user);
+                        toast.success(response.data.message);
+                        props.setUser(response.data);
+                        props.onHide();
+                    }
+                    else {
+                        toast.error(response.data.message);
+                    }
+                }, (error) => {
+                    console.log(error);
+                });
+        }
+        else {
+            toast.warning("Please enter your email and password to login!");
+        }
     }
 
     return (
