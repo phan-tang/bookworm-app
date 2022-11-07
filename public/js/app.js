@@ -9079,9 +9079,10 @@ function App() {
       newestOnTop: false,
       closeOnClick: true,
       rtl: false,
-      pauseOnFocusLoss: true,
+      pauseOnFocusLoss: false,
       draggable: true,
-      pauseOnHover: true
+      pauseOnHover: true,
+      theme: "colored"
     })]
   });
 }
@@ -9366,7 +9367,7 @@ function BookRow(props) {
     children: [" ", props.books && props.books.map(function (book) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_BookCard_BookCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
         bookCard: book
-      }, "book_" + book.id);
+      }, "book_id_" + book.id + "_author_id" + book.author.id);
     })]
   });
 }
@@ -9553,6 +9554,10 @@ function FilterFields(props) {
     _useState2 = _slicedToArray(_useState, 2),
     filterValue = _useState2[0],
     setFilterValue = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState4 = _slicedToArray(_useState3, 2),
+    describeFilters = _useState4[0],
+    setDescribeFilters = _useState4[1];
 
   //Function used to getField
   var getField = function getField(field) {
@@ -9601,10 +9606,11 @@ function FilterFields(props) {
       params[key] = null;
     });
     props.handleParams(params);
+    props.handleChangeDescribeFilter({});
 
-    //Set filterValue
+    //Set filterValue, describeFilters
     setFilterValue({});
-    console.log(params);
+    setDescribeFilters({});
   };
 
   //Function used to handle click button delete filter field for list of books
@@ -9615,28 +9621,40 @@ function FilterFields(props) {
     var tempFilterValue = filterValue;
     tempFilterValue[filterField] = null;
     setFilterValue(tempFilterValue);
-    console.log(filterValue);
+
+    //Set describeFilters
+    var tempDescribeFilters = describeFilters;
+    tempDescribeFilters[field + "_name"] = null;
+    setDescribeFilters(tempDescribeFilters);
 
     //Call function to apply filter with params
     var params = new Object();
     params[filterField] = null;
     props.handleParams(params);
+    setDescribeFilters(tempDescribeFilters);
+    props.handleChangeDescribeFilter(tempDescribeFilters);
   };
 
   //Function used to handle click button apply filter for list of books
-  var handleClickButtonItem = function handleClickButtonItem(id, field) {
+  var handleClickButtonItem = function handleClickButtonItem(id, item_name, field) {
     var filterField = getField(field);
 
     //Set filterValue
     var tempFilterValue = filterValue;
     tempFilterValue[filterField] = id;
     setFilterValue(tempFilterValue);
-    console.log(filterValue);
+
+    //Set describeFilters
+    var tempDescribeFilters = describeFilters;
+    tempDescribeFilters[field + "_name"] = displayText(item_name);
+    setDescribeFilters(tempDescribeFilters);
 
     //Call function to apply filter with params
     var params = new Object();
     params[filterField] = id;
     props.handleParams(params);
+    setDescribeFilters(tempDescribeFilters);
+    props.handleChangeDescribeFilter(tempDescribeFilters);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -9671,7 +9689,7 @@ function FilterFields(props) {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
                   className: "col-10 " + name,
                   onClick: function onClick() {
-                    return handleClickButtonItem(item.id, field);
+                    return handleClickButtonItem(item.id, item[field + "_name"], field);
                   },
                   children: displayText(item[field + "_name"])
                 }), displayDeleteButton(name, field)]
@@ -10895,25 +10913,29 @@ function Product(props) {
     _useState6 = _slicedToArray(_useState5, 2),
     filterFields = _useState6[0],
     setFilterFields = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState8 = _slicedToArray(_useState7, 2),
-    countReviews = _useState8[0],
-    setCountReviews = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    describeFilter = _useState8[0],
+    setDescribeFilter = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState10 = _slicedToArray(_useState9, 2),
-    averageStar = _useState10[0],
-    setAverageStar = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    countReviews = _useState10[0],
+    setCountReviews = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState12 = _slicedToArray(_useState11, 2),
-    quantity = _useState12[0],
-    setQuantity = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    averageStar = _useState12[0],
+    setAverageStar = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState14 = _slicedToArray(_useState13, 2),
+    quantity = _useState14[0],
+    setQuantity = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       "sort": "date",
       "order": "desc"
     }),
-    _useState14 = _slicedToArray(_useState13, 2),
-    params = _useState14[0],
-    setParams = _useState14[1];
+    _useState16 = _slicedToArray(_useState15, 2),
+    params = _useState16[0],
+    setParams = _useState16[1];
   var sortFields = {
     "show": "Sort by date newest to oldest",
     "values": [{
@@ -11080,6 +11102,19 @@ function Product(props) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {});
   };
 
+  //Function used to display describe filter
+  var displayDescribeFilter = function displayDescribeFilter() {
+    if (describeFilter != "") {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        className: "describe-filter",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("i", {
+          children: ["Filter by ", describeFilter]
+        })
+      });
+    }
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {});
+  };
+
   //Function used to display book cover photo
   var displayBookCoverImage = function displayBookCoverImage(book) {
     if (book.book_cover_photo != null) {
@@ -11194,6 +11229,7 @@ function Product(props) {
   var displayAverageStar = function displayAverageStar() {
     if (averageStar != 0) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("h4", {
+        className: "average-star",
         children: [averageStar, " Star"]
       });
     }
@@ -11234,7 +11270,7 @@ function Product(props) {
             onClick: function onClick() {
               return handleChangeParams({
                 "star": null
-              });
+              }, "");
             },
             children: "(" + countReviews[0] + ")"
           })
@@ -11250,7 +11286,7 @@ function Product(props) {
               onClick: function onClick() {
                 return handleChangeParams({
                   "star": field.id
-                });
+                }, field.star_name);
               },
               children: field.star_name + " (" + countReviews[field.id] + ")"
             }, "filter_field_review_" + field.id);
@@ -11325,11 +11361,12 @@ function Product(props) {
   };
 
   //Function used to apply sort and filter for list of reviews
-  var handleChangeParams = function handleChangeParams(addParams) {
+  var handleChangeParams = function handleChangeParams(addParams, star_name) {
     getParams(addParams);
     var api = getAPI(params);
     console.log(api);
     fetchReviews(api, false);
+    setDescribeFilter(star_name);
   };
 
   //ComponentDidMount
@@ -11375,7 +11412,7 @@ function Product(props) {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h5", {
                   className: "card-title",
                   children: "Customer Reviews"
-                }), displayAverageStar(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                }), displayAverageStar(), displayDescribeFilter(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                   className: "row filter-review",
                   children: displayFilterFields()
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -11468,16 +11505,20 @@ function Shop() {
     _useState2 = _slicedToArray(_useState, 2),
     filterFields = _useState2[0],
     setFilterFields = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    books = _useState4[0],
-    setBooks = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    describeFilter = _useState4[0],
+    setDescribeFilter = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    books = _useState6[0],
+    setBooks = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       "sort": "on_sale"
     }),
-    _useState6 = _slicedToArray(_useState5, 2),
-    params = _useState6[0],
-    setParams = _useState6[1];
+    _useState8 = _slicedToArray(_useState7, 2),
+    params = _useState8[0],
+    setParams = _useState8[1];
 
   //Fields used to sort book
   var sortFields = {
@@ -11638,6 +11679,35 @@ function Shop() {
     fetchBooks(api);
   };
 
+  //Function used to handle change describe filter for list of books
+  var handleChangeDescribeFilter = function handleChangeDescribeFilter(describeFilters) {
+    var describe = "";
+    if (describeFilters != {}) {
+      Object.values(describeFilters).filter(function (value) {
+        return value != null;
+      }).forEach(function (value, index) {
+        if (index != 0) {
+          describe += ",";
+        }
+        describe += " " + value;
+      });
+    }
+    setDescribeFilter(describe);
+  };
+
+  //Function used to display describe filter
+  var displayDescribeFilter = function displayDescribeFilter() {
+    if (describeFilter != "") {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        className: "describe-filter",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("i", {
+          children: ["Filter by", describeFilter]
+        })
+      });
+    }
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {});
+  };
+
   //Function used to display describe books show content
   var displayDescribeBooksShowContent = function displayDescribeBooksShowContent() {
     if (books != null) {
@@ -11679,11 +11749,11 @@ function Shop() {
       className: "container shop",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "row",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "part-title",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
             children: "Books"
-          })
+          }), displayDescribeFilter()]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "line"
@@ -11695,7 +11765,8 @@ function Shop() {
             className: "col-xl-2 col-lg-2 col-md-12 col-sm-12 filter-book",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_element_filterFields_filterFields__WEBPACK_IMPORTED_MODULE_2__["default"], {
               fields: filterFields,
-              handleParams: handleChangeParams
+              handleParams: handleChangeParams,
+              handleChangeDescribeFilter: handleChangeDescribeFilter
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
             className: "col-xl-10 col-lg-10 col-md-12 col-sm-12 shop-books-show",
@@ -17192,7 +17263,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 50px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 40px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17432,7 +17503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-overview .card {\n  margin-top: 20px;\n}\n.product-overview .card .product-information .default-book-cover-photo {\n  height: 350px;\n  background-color: gray;\n}\n.product-overview .card .product-information .product-image {\n  width: 100%;\n  height: 350px;\n  border-radius: 8px;\n}\n.product-overview .card .product-information .produc-author {\n  padding-top: 10px;\n  text-align: right;\n}\n.product-overview .card .product-describe {\n  padding: 20px;\n}\n.product-overview .card .card-title {\n  font-weight: bold;\n  color: #9C4343;\n  height: 75px;\n  overflow: auto;\n}\n.product-overview .card .card-body button {\n  width: 100%;\n}\n.product-overview .card .card-body .describe-reviews-show-content {\n  display: flex;\n  align-items: center;\n}\n.product-overview .card .card-body .edit-reviews-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.product-overview .card .card-body .filter-field-review {\n  border: none;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .filter-field-review.active {\n  border: none;\n  color: #9C4343;\n  background-color: white;\n  width: auto;\n}\n.product-overview .product-price .card-body .plus-minus-number-input {\n  padding: 15px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input .product-quantity {\n  text-align: center;\n  border: solid black 1px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input button {\n  font-size: 17px;\n  font-weight: bold;\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-overview .card {\n  margin-top: 20px;\n}\n.product-overview .card .product-information .default-book-cover-photo {\n  height: 350px;\n  background-color: gray;\n}\n.product-overview .card .product-information .product-image {\n  width: 100%;\n  height: 350px;\n  border-radius: 8px;\n}\n.product-overview .card .product-information .produc-author {\n  padding-top: 10px;\n  text-align: right;\n}\n.product-overview .card .product-describe {\n  padding: 20px;\n}\n.product-overview .card .card-title {\n  font-weight: bold;\n  color: #9C4343;\n  height: 75px;\n  overflow: auto;\n}\n.product-overview .card .card-body button {\n  width: 100%;\n}\n.product-overview .card .card-body .describe-reviews-show-content {\n  display: flex;\n  align-items: center;\n}\n.product-overview .card .card-body .edit-reviews-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.product-overview .card .card-body .filter-field-review {\n  border: none;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .filter-field-review.active {\n  border: none;\n  color: #9C4343;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .average-star {\n  display: inline;\n}\n.product-overview .card .card-body .describe-filter {\n  display: inline;\n  color: gray;\n  font-weight: normal;\n  font-size: 15px;\n  padding-left: 20px;\n  margin-bottom: 0px;\n  margin-top: 10px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input {\n  padding: 15px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input .product-quantity {\n  text-align: center;\n  border: solid black 1px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input button {\n  font-size: 17px;\n  font-weight: bold;\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17456,7 +17527,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-content .shop-books-show .describe-books-show-content {\n  margin-bottom: 10px;\n  display: flex;\n  align-items: center;\n}\n.shop-content .shop-books-show .edit-books-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.shop-content .shop-books-show .books-show {\n  margin-top: 20px;\n  border: none;\n  display: flex;\n  justify-content: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".part-title p {\n  display: inline;\n}\n.part-title .describe-filter {\n  color: gray;\n  font-weight: normal;\n  font-size: 15px;\n  padding-left: 20px;\n  margin-bottom: 0px;\n  margin-top: 10px;\n}\n\n.shop-content .shop-books-show .describe-books-show-content {\n  margin-bottom: 10px;\n  display: flex;\n  align-items: center;\n}\n.shop-content .shop-books-show .edit-books-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.shop-content .shop-books-show .books-show {\n  margin-top: 20px;\n  border: none;\n  display: flex;\n  justify-content: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

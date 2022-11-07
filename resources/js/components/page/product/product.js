@@ -12,6 +12,7 @@ function Product(props) {
     const [book, setBook] = useState();
     const [reviews, setReviews] = useState(null);
     const [filterFields, setFilterFields] = useState([]);
+    const [describeFilter, setDescribeFilter] = useState("");
     const [countReviews, setCountReviews] = useState([]);
     const [averageStar, setAverageStar] = useState(0);
     const [quantity, setQuantity] = useState(1);
@@ -109,6 +110,14 @@ function Product(props) {
         return (<></>);
     }
 
+    //Function used to display describe filter
+    const displayDescribeFilter = () => {
+        if (describeFilter != "") {
+            return (<p className='describe-filter'><i>Filter by {describeFilter}</i></p>);
+        }
+        return (<></>);
+    }
+
     //Function used to display book cover photo
     const displayBookCoverImage = (book) => {
         if (book.book_cover_photo != null) {
@@ -185,7 +194,7 @@ function Product(props) {
     const displayAverageStar = () => {
         if (averageStar != 0) {
             return (
-                <h4>{averageStar} Star</h4>
+                <h4 className="average-star">{averageStar} Star</h4>
             );
         }
         return (<></>);
@@ -219,7 +228,7 @@ function Product(props) {
             return (
                 <>
                     <div className="col-2">
-                        <button className="filter-field-review" onClick={() => handleChangeParams({ "star": null })}>{"(" + countReviews[0] + ")"}</button>
+                        <button className="filter-field-review" onClick={() => handleChangeParams({ "star": null }, "")}>{"(" + countReviews[0] + ")"}</button>
                     </div>
                     <div className="col-10">
                         {filterFields.map((field) => {
@@ -227,7 +236,7 @@ function Product(props) {
                             if (field.id == params["star"]) {
                                 name += " active";
                             }
-                            return (<button className={name} key={"filter_field_review_" + field.id} onClick={() => handleChangeParams({ "star": field.id })}>{field.star_name + " (" + countReviews[field.id] + ")"}</button>);
+                            return (<button className={name} key={"filter_field_review_" + field.id} onClick={() => handleChangeParams({ "star": field.id }, field.star_name)}>{field.star_name + " (" + countReviews[field.id] + ")"}</button>);
                         })}
                     </div>
                 </>
@@ -288,11 +297,12 @@ function Product(props) {
     }
 
     //Function used to apply sort and filter for list of reviews
-    const handleChangeParams = (addParams) => {
+    const handleChangeParams = (addParams, star_name) => {
         getParams(addParams);
         let api = getAPI(params);
         console.log(api);
         fetchReviews(api, false);
+        setDescribeFilter(star_name);
     }
 
     //ComponentDidMount
@@ -334,6 +344,7 @@ function Product(props) {
                                 <div className="card-body">
                                     <h5 className="card-title">Customer Reviews</h5>
                                     {displayAverageStar()}
+                                    {displayDescribeFilter()}
                                     <div className="row filter-review">
                                         {displayFilterFields()}
                                     </div>

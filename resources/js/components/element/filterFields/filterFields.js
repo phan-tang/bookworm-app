@@ -4,6 +4,7 @@ import './filterFields.scss';
 function FilterFields(props) {
 
     const [filterValue, setFilterValue] = useState({});
+    const [describeFilters, setDescribeFilters] = useState({});
 
     //Function used to getField
     const getField = (field) => {
@@ -47,10 +48,11 @@ function FilterFields(props) {
             params[key] = null
         })
         props.handleParams(params);
+        props.handleChangeDescribeFilter({});
 
-        //Set filterValue
+        //Set filterValue, describeFilters
         setFilterValue({});
-        console.log(params)
+        setDescribeFilters({});
     }
 
     //Function used to handle click button delete filter field for list of books
@@ -61,28 +63,42 @@ function FilterFields(props) {
         let tempFilterValue = filterValue;
         tempFilterValue[filterField] = null;
         setFilterValue(tempFilterValue);
-        console.log(filterValue)
+
+        //Set describeFilters
+        let tempDescribeFilters = describeFilters;
+        tempDescribeFilters[field + "_name"] = null;
+        setDescribeFilters(tempDescribeFilters);
 
         //Call function to apply filter with params
         let params = new Object();
         params[filterField] = null
         props.handleParams(params);
+
+        setDescribeFilters(tempDescribeFilters);
+        props.handleChangeDescribeFilter(tempDescribeFilters);
     }
 
     //Function used to handle click button apply filter for list of books
-    const handleClickButtonItem = (id, field) => {
+    const handleClickButtonItem = (id, item_name, field) => {
         let filterField = getField(field);
 
         //Set filterValue
         let tempFilterValue = filterValue;
         tempFilterValue[filterField] = id;
         setFilterValue(tempFilterValue);
-        console.log(filterValue)
+
+        //Set describeFilters
+        let tempDescribeFilters = describeFilters;
+        tempDescribeFilters[field + "_name"] = displayText(item_name);
+        setDescribeFilters(tempDescribeFilters);
 
         //Call function to apply filter with params
         let params = new Object();
         params[filterField] = id
         props.handleParams(params);
+
+        setDescribeFilters(tempDescribeFilters);
+        props.handleChangeDescribeFilter(tempDescribeFilters);
     }
 
     return (
@@ -104,7 +120,7 @@ function FilterFields(props) {
                                         let name = getClassName(item.id, field);
                                         return (
                                             <div className="row filter-item" key={field + "_" + item.id}>
-                                                <button className={"col-10 " + name} onClick={() => handleClickButtonItem(item.id, field)}>{displayText(item[field + "_name"])}</button>
+                                                <button className={"col-10 " + name} onClick={() => handleClickButtonItem(item.id, item[field + "_name"], field)}>{displayText(item[field + "_name"])}</button>
                                                 {displayDeleteButton(name, field)}
                                             </div>
                                         );

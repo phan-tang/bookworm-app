@@ -8,6 +8,7 @@ import './shop.scss';
 function Shop() {
 
     const [filterFields, setFilterFields] = useState([]);
+    const [describeFilter, setDescribeFilter] = useState("");
     const [books, setBooks] = useState(null);
     const [params, setParams] = useState({ "sort": "on_sale" });
 
@@ -94,6 +95,28 @@ function Shop() {
         fetchBooks(api);
     }
 
+    //Function used to handle change describe filter for list of books
+    const handleChangeDescribeFilter = (describeFilters) => {
+        let describe = "";
+        if (describeFilters != {}) {
+            Object.values(describeFilters).filter(value => value != null).forEach((value, index) => {
+                if (index != 0) {
+                    describe += ",";
+                }
+                describe += " " + value;
+            });
+        }
+        setDescribeFilter(describe);
+    }
+
+    //Function used to display describe filter
+    const displayDescribeFilter = () => {
+        if (describeFilter != "") {
+            return (<p className='describe-filter'><i>Filter by{describeFilter}</i></p>);
+        }
+        return (<></>);
+    }
+
     //Function used to display describe books show content
     const displayDescribeBooksShowContent = () => {
         if (books != null) {
@@ -136,6 +159,7 @@ function Shop() {
                 <div className="row">
                     <div className="part-title">
                         <p>Books</p>
+                        {displayDescribeFilter()}
                     </div>
                 </div>
                 <div className="line"></div>
@@ -144,7 +168,7 @@ function Shop() {
                     <div className="row">
                         {/* <!-- Filter --> */}
                         <div className="col-xl-2 col-lg-2 col-md-12 col-sm-12 filter-book">
-                            <FilterFields fields={filterFields} handleParams={handleChangeParams}></FilterFields>
+                            <FilterFields fields={filterFields} handleParams={handleChangeParams} handleChangeDescribeFilter={handleChangeDescribeFilter}></FilterFields>
                         </div>
                         {/* <!-- Books Show --> */}
                         <div className="col-xl-10 col-lg-10 col-md-12 col-sm-12 shop-books-show">
