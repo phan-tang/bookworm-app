@@ -27,8 +27,7 @@ function BookCard(props) {
 
     return (
         <>
-            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                {/* <Link className='book-link' to={`/product/${props.bookCard.id}`}> */}
+            <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6">
                 <div className="card book-card">
                     <Link className='book-link' to={`/product/${props.bookCard.id}`}>
                         {displayBookCoverImage(props.bookCard)}
@@ -41,7 +40,6 @@ function BookCard(props) {
                         </div>
                     </Link>
                 </div>
-                {/* </Link> */}
             </div>
         </>
     );
