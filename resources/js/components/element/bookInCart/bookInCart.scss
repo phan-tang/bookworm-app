@@ -7,34 +7,37 @@
         }
     }
     .product-in-cart-name{
-        display: flex;
-        align-items: center;
-        .book-title{
-            height: 40px;
-            overflow: auto;
-        }
-        .default-book-cover-photo{
-            margin: 5px;
-            height: 150px;
-            width: 120px;
-            background-color: gray;
-            border-radius: 8px;
-        }
-        img{
-            margin: 5px;
-            display: inline;
-            width: 120px;
-            height: 150px;
-            border-radius: 8px;
-            @media screen and (max-width: 768px){
-                width: 80px;
-                height: 100px;
+        .book-link{
+            display: flex;
+            align-items: center;
+            color: black;
+            .book-title{
+                height: 40px;
+                overflow: auto;
             }
-        }
-        h6{
-            font-size: 15px;
-            @media screen and (max-width: 768px){
-                font-size: 12px;
+            .default-book-cover-photo{
+                margin: 5px;
+                height: 150px;
+                width: 120px;
+                background-color: gray;
+                border-radius: 8px;
+            }
+            img{
+                margin: 5px;
+                display: inline;
+                width: 120px;
+                height: 150px;
+                border-radius: 8px;
+                @media screen and (max-width: 768px){
+                    width: 80px;
+                    height: 100px;
+                }
+            }
+            h6{
+                font-size: 15px;
+                @media screen and (max-width: 768px){
+                    font-size: 12px;
+                }
             }
         }
     }

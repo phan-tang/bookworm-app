@@ -1,6 +1,7 @@
 import React from "react";
 import './bookInCart.scss';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function BookInCart(props) {
 
@@ -39,11 +40,13 @@ function BookInCart(props) {
         <>
             <tr className="product-in-cart-detail">
                 <th scope="row" className="product-in-cart-name">
-                    {displayBookCoverImage(props.book)}
-                    <span>
-                        <h5 className="book-title">{props.book.title}</h5>
-                        <h6>{props.book.author}</h6>
-                    </span>
+                    <Link className='book-link' to={`/product/${props.book.book_id}`}>
+                        {displayBookCoverImage(props.book)}
+                        <span>
+                            <h5 className="book-title">{props.book.title}</h5>
+                            <h6>{props.book.author}</h6>
+                        </span>
+                    </Link>
                 </th>
                 <td className="product-in-cart-price">
                     <h5 className="book-final-price">${props.book.final_price}</h5>
@@ -60,7 +63,7 @@ function BookInCart(props) {
                     <h5>${props.book.final_price * quantity}</h5>
                 </td>
             </tr>
-        </>
+        </ >
     );
 }
 
