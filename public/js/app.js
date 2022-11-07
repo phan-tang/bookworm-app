@@ -9893,6 +9893,32 @@ function Header(props) {
       })
     });
   };
+
+  //Function used to display login button or logout button
+  var displayUserDropdown = function displayUserDropdown() {
+    if (props.userInformation == null) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
+        className: "nav-item",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+          className: "nav-link",
+          onClick: function onClick() {
+            return props.setShow(true);
+          },
+          children: "Login"
+        })
+      });
+    }
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
+      className: "nav-item",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+        className: "nav-link dropdown-item",
+        onClick: function onClick() {
+          return handleLogout();
+        },
+        children: "Logout"
+      })
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
     className: "navbar fixed-top",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -9926,6 +9952,35 @@ function Header(props) {
             children: props.numberOfBooks
           })]
         }), displayUser()]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+        className: "nav dropdown",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+          className: "dropdown-button",
+          type: "button",
+          "data-bs-toggle": "dropdown",
+          "aria-expanded": "false",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
+            className: "fa fa-bars"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("ul", {
+          className: "dropdown-menu dropdown-menu-end",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(HeaderLink, {
+            to: "/",
+            children: "Home"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(HeaderLink, {
+            to: "/shop",
+            children: "Shop"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(HeaderLink, {
+            to: "/about",
+            children: "About"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(HeaderLink, {
+            to: "/cart",
+            children: ["Cart ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+              className: "badge",
+              children: props.numberOfBooks
+            })]
+          }), displayUserDropdown()]
+        })]
       })]
     })
   });
@@ -17263,7 +17318,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 40px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 40px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n  border: 1px solid black;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17359,7 +17414,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\n  background-color: black;\n}\n.navbar .navbar-header {\n  display: flex;\n  align-items: center;\n}\n.navbar .navbar-header img {\n  height: 30px;\n}\n.navbar .navbar-header span {\n  font-weight: bold;\n  color: #f75454;\n  font-size: 25px;\n}\n.navbar .nav-pills li.nav-item .nav-link {\n  color: white;\n  font-weight: bold;\n}\n.navbar .nav-pills li.nav-item .nav-link .badge {\n  background-color: #f75454;\n}\n.navbar .nav-pills li.nav-item .nav-link.active {\n  background-color: #f75454;\n  color: white;\n  border-radius: 8px;\n}\n.navbar .nav-pills li.nav-item .nav-link.active .badge {\n  background-color: black;\n}\n.navbar .nav-pills li.nav-item .nav-link:hover {\n  color: #f75454;\n}\n.navbar .nav-pills li.nav-item .nav-link.active {\n  color: white;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item {\n  background-color: white;\n  color: black;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item:hover {\n  color: #f75454;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\n  background-color: black;\n}\n.navbar .navbar-header {\n  display: flex;\n  align-items: center;\n}\n.navbar .navbar-header img {\n  padding-left: 20px;\n  height: 30px;\n}\n.navbar .navbar-header span {\n  font-weight: bold;\n  color: #f75454;\n  font-size: 25px;\n}\n@media screen and (max-width: 950px) {\n  .navbar .nav-pills {\n    display: none;\n  }\n}\n.navbar .nav-pills li.nav-item .nav-link {\n  color: white;\n  font-weight: bold;\n}\n.navbar .nav-pills li.nav-item .nav-link .badge {\n  background-color: #f75454;\n}\n.navbar .nav-pills li.nav-item .nav-link.active {\n  background-color: #f75454;\n  color: white;\n  border-radius: 8px;\n}\n.navbar .nav-pills li.nav-item .nav-link.active .badge {\n  background-color: black;\n}\n.navbar .nav-pills li.nav-item .nav-link:hover {\n  color: #f75454;\n}\n.navbar .nav-pills li.nav-item .nav-link.active:hover {\n  color: white;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item {\n  background-color: white;\n  color: black;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item:hover {\n  color: #f75454;\n}\n.navbar .nav.dropdown {\n  display: none;\n  margin-right: 20px;\n}\n@media screen and (max-width: 950px) {\n  .navbar .nav.dropdown {\n    display: block;\n  }\n}\n.navbar .nav.dropdown .dropdown-button {\n  background-color: #f75454;\n  color: white;\n  border-radius: 8px;\n}\n.navbar .nav.dropdown i {\n  padding: 10px;\n}\n.navbar .nav.dropdown li.nav-item .nav-link {\n  color: black;\n  font-weight: bold;\n  border: none;\n  background-color: white;\n}\n.navbar .nav.dropdown li.nav-item .nav-link .badge {\n  background-color: #f75454;\n}\n.navbar .nav.dropdown li.nav-item .nav-link.active {\n  background-color: #f75454;\n  color: white;\n  border-radius: 8px;\n}\n.navbar .nav.dropdown li.nav-item .nav-link.active .badge {\n  background-color: black;\n}\n.navbar .nav.dropdown li.nav-item .nav-link:hover {\n  color: #f75454;\n}\n.navbar .nav.dropdown li.nav-item .nav-link.active:hover {\n  color: white;\n}\n.navbar .nav.dropdown li.nav-item .nav-link.dropdown-item:hover {\n  background-color: white;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17431,7 +17486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bookworm-information h1 {\n  padding: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n.bookworm-information .about-content {\n  padding: 30px 80px 30px 80px;\n}\n.bookworm-information .about-content span {\n  padding-top: 15px;\n  font-size: 20px;\n}\n.bookworm-information .about-content h4 {\n  font-weight: bold;\n  padding-top: 30px;\n}\n.bookworm-information .about-content p {\n  padding-top: 15px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bookworm-information h1 {\n  padding: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n.bookworm-information .about-content {\n  padding: 30px;\n}\n.bookworm-information .about-content span {\n  padding-top: 15px;\n  font-size: 20px;\n}\n.bookworm-information .about-content h4 {\n  font-weight: bold;\n  padding-top: 30px;\n}\n.bookworm-information .about-content p {\n  padding-top: 15px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17503,7 +17558,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-overview .card {\n  margin-top: 20px;\n}\n.product-overview .card .product-information .default-book-cover-photo {\n  height: 350px;\n  background-color: gray;\n}\n.product-overview .card .product-information .product-image {\n  width: 100%;\n  height: 350px;\n  border-radius: 8px;\n}\n.product-overview .card .product-information .produc-author {\n  padding-top: 10px;\n  text-align: right;\n}\n.product-overview .card .product-describe {\n  padding: 20px;\n}\n.product-overview .card .card-title {\n  font-weight: bold;\n  color: #9C4343;\n  height: 75px;\n  overflow: auto;\n}\n.product-overview .card .card-body button {\n  width: 100%;\n}\n.product-overview .card .card-body .describe-reviews-show-content {\n  display: flex;\n  align-items: center;\n}\n.product-overview .card .card-body .edit-reviews-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.product-overview .card .card-body .filter-field-review {\n  border: none;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .filter-field-review.active {\n  border: none;\n  color: #9C4343;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .average-star {\n  display: inline;\n}\n.product-overview .card .card-body .describe-filter {\n  display: inline;\n  color: gray;\n  font-weight: normal;\n  font-size: 15px;\n  padding-left: 20px;\n  margin-bottom: 0px;\n  margin-top: 10px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input {\n  padding: 15px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input .product-quantity {\n  text-align: center;\n  border: solid black 1px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input button {\n  font-size: 17px;\n  font-weight: bold;\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-overview .card {\n  margin-top: 20px;\n}\n.product-overview .card .product-information .default-book-cover-photo {\n  height: 350px;\n  background-color: gray;\n}\n.product-overview .card .product-information .product-image {\n  width: 100%;\n  height: 350px;\n  border-radius: 8px;\n}\n.product-overview .card .product-information .produc-author {\n  padding-top: 10px;\n  text-align: right;\n}\n.product-overview .card .product-describe {\n  padding: 20px;\n}\n.product-overview .card .card-title {\n  font-weight: bold;\n  color: #9C4343;\n  height: 75px;\n  overflow: auto;\n}\n.product-overview .card .card-body button {\n  width: 100%;\n}\n.product-overview .card .card-body .describe-reviews-show-content {\n  display: flex;\n  align-items: center;\n}\n.product-overview .card .card-body .edit-reviews-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.product-overview .card .card-body .filter-field-review {\n  border: none;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .filter-field-review.active {\n  border: none;\n  color: #9C4343;\n  background-color: white;\n  width: auto;\n}\n.product-overview .card .card-body .average-star {\n  display: inline;\n}\n.product-overview .card .card-body .describe-filter {\n  display: inline;\n  color: gray;\n  font-weight: normal;\n  font-size: 15px;\n  padding-left: 20px;\n  margin-bottom: 0px;\n  margin-top: 10px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input {\n  padding: 15px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input .product-quantity {\n  text-align: center;\n  border: solid black 1px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input .col-2 {\n  padding: 0px;\n}\n.product-overview .product-price .card-body .plus-minus-number-input .col-2 button {\n  font-size: 17px;\n  min-width: 30px;\n  font-weight: bold;\n  text-align: center;\n  border: 1px solid black;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

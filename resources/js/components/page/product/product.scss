@@ -76,10 +76,15 @@
                     border: solid black 1px;
                 }
 
-                button{
-                    font-size: 17px;
-                    font-weight: bold;
-                    text-align: center;
+                .col-2{
+                    padding: 0px;
+                    button{
+                        font-size: 17px;
+                        min-width: 30px;
+                        font-weight: bold;
+                        text-align: center;
+                        border: 1px solid black;
+                    }
                 }
             }
         }
