@@ -45,7 +45,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-    const [bookCart, setBookCart] = useState([{ "book_id": 452, "title": "Test", "author": "Oliz", "book_cover_photo": null, "quantity": 1, "final_price": 30, "previous_price": 30 }]);
+    const [bookCart, setBookCart] = useState([]);
     const [numberBooks, setNumberBooks] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
     const [user, setUser] = useState(null);

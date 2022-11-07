@@ -8965,15 +8965,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([{
-      "book_id": 452,
-      "title": "Test",
-      "author": "Oliz",
-      "book_cover_photo": null,
-      "quantity": 1,
-      "final_price": 30,
-      "previous_price": 30
-    }]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     bookCart = _useState2[0],
     setBookCart = _useState2[1];
