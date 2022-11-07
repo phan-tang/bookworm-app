@@ -25,7 +25,7 @@ function About() {
                                 Manhattan and Brooklyn. We specialize in travel books and language classes."</span>
                         </div>
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <h4>Our Story</h4>
                                 <p>
                                     The name Bookworm was taken from the original name for New York International Airport,
@@ -38,7 +38,7 @@ function About() {
                                 <p>
                                     From March 2008 through May 2016, the store was located in the Flatiron District.                            </p>
                             </div>
-                            <div className="col-6">
+                            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <h4>Our Vision</h4>
                                 <p>
                                     One of the last travel bookstores in the country, our Manhattan store carries a range of
