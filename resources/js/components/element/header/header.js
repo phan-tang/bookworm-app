@@ -65,6 +65,24 @@ function Header(props) {
         );
     }
 
+    //Function used to display login button or logout button
+    const displayUserDropdown = () => {
+        if (props.userInformation == null) {
+            return (
+                <li className='nav-item'>
+                    <button className='nav-link' onClick={() => props.setShow(true)}>
+                        Login
+                    </button>
+                </li>
+            );
+        }
+        return (
+            <li className='nav-item'>
+                <button className='nav-link dropdown-item' onClick={() => handleLogout()}>Logout</button>
+            </li>
+        );
+    }
+
     return (
         <div className="navbar fixed-top">
             <div className="container-fluid navbar">
@@ -81,6 +99,18 @@ function Header(props) {
                     <HeaderLink to='/cart'>Cart <span className="badge">{props.numberOfBooks}</span></HeaderLink>
                     {displayUser()}
                 </ul>
+                <span className="nav dropdown">
+                    <button className="dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i className="fa fa-bars"></i>
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-end">
+                        <HeaderLink to='/'>Home</HeaderLink>
+                        <HeaderLink to='/shop'>Shop</HeaderLink>
+                        <HeaderLink to='/about'>About</HeaderLink>
+                        <HeaderLink to='/cart'>Cart <span className="badge">{props.numberOfBooks}</span></HeaderLink>
+                        {displayUserDropdown()}
+                    </ul>
+                </span>
             </div>
         </div>
     );

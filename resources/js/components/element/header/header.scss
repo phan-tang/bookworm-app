@@ -4,6 +4,7 @@
         display: flex;
         align-items: center;
         img {
+            padding-left: 20px;
             height: 30px;
         }
         span{
@@ -13,6 +14,9 @@
         }
       }
     .nav-pills{
+        @media screen and (max-width: 950px){
+            display: none;
+        }
         li.nav-item{
             .nav-link{
                 color: white;
@@ -32,7 +36,7 @@
             .nav-link:hover{
                 color: #f75454;
             }
-            .nav-link.active{
+            .nav-link.active:hover{
                 color: white;
             }
             .nav-link.dropdown-item{
@@ -41,6 +45,49 @@
             }
             .nav-link.dropdown-item:hover{
                 color: #f75454;
+            }
+        }
+    }
+    .nav.dropdown{
+        @media screen and (max-width: 950px){
+            display: block;
+        }
+        display: none;
+        margin-right: 20px;
+        .dropdown-button{
+            background-color: #f75454;
+            color: white;
+            border-radius: 8px;
+        }
+        i{
+            padding: 10px;
+        }
+        li.nav-item{
+            .nav-link{
+                color: black;
+                font-weight: bold;
+                border: none;
+                background-color: white;
+                .badge{
+                    background-color: #f75454;
+                }
+            }
+            .nav-link.active{
+                background-color: #f75454;
+                color: white;
+                border-radius: 8px;
+                .badge{
+                    background-color: black;
+                }
+            }
+            .nav-link:hover{
+                color: #f75454;
+            }
+            .nav-link.active:hover{
+                color: white;
+            }
+            .nav-link.dropdown-item:hover{
+                background-color: white;
             }
         }
     }
