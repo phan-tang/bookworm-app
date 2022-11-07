@@ -9198,7 +9198,7 @@ function BookCard(props) {
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12",
+      className: "col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "card book-card",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
@@ -17318,7 +17318,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 40px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n  border: 1px solid black;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n@media screen and (max-width: 768px) {\n  .product-in-cart-detail h5 {\n    font-size: 15px;\n  }\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 40px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n@media screen and (max-width: 768px) {\n  .product-in-cart-detail .product-in-cart-name img {\n    width: 80px;\n    height: 100px;\n  }\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n@media screen and (max-width: 768px) {\n  .product-in-cart-detail .product-in-cart-name h6 {\n    font-size: 12px;\n  }\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .product-in-cart-quantity .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .product-in-cart-quantity .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n@media screen and (max-width: 768px) {\n  .product-in-cart-detail .product-in-cart-quantity .plus-minus-number-input .product-quantity {\n    width: 30%;\n    height: 100%;\n  }\n}\n.product-in-cart-detail .product-in-cart-quantity .plus-minus-number-input button {\n  height: 100%;\n  border: 1px solid black;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17486,7 +17486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bookworm-information h1 {\n  padding: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n.bookworm-information .about-content {\n  padding: 30px;\n}\n.bookworm-information .about-content span {\n  padding-top: 15px;\n  font-size: 20px;\n}\n.bookworm-information .about-content h4 {\n  font-weight: bold;\n  padding-top: 30px;\n}\n.bookworm-information .about-content p {\n  padding-top: 15px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bookworm-information h1 {\n  padding: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n.bookworm-information .about-content {\n  padding: 30px;\n}\n.bookworm-information .about-content span {\n  padding-top: 15px;\n  font-size: 22px;\n}\n.bookworm-information .about-content h4 {\n  font-weight: bold;\n  padding-top: 30px;\n}\n.bookworm-information .about-content p {\n  padding-top: 15px;\n  font-size: 18px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17510,7 +17510,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".products-in-cart {\n  margin-top: 50px;\n}\n.products-in-cart h5 {\n  font-weight: bold;\n}\n.products-in-cart .products-in-cart-table h3 {\n  padding: 30px;\n  text-align: center;\n}\n\n.cart-totals {\n  text-align: center;\n  justify-content: center;\n}\n.cart-totals .cart-totals-price {\n  font-size: 30px;\n  padding: 20px;\n}\n.cart-totals button {\n  width: 150px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@media screen and (max-width: 768px) {\n  .your-cart {\n    padding: 0px;\n  }\n}\n.your-cart .products-in-cart {\n  margin-top: 50px;\n}\n.your-cart .products-in-cart h5 {\n  font-weight: bold;\n}\n@media screen and (max-width: 768px) {\n  .your-cart .products-in-cart h5 {\n    font-size: 15px;\n  }\n}\n.your-cart .products-in-cart .products-in-cart-table h3 {\n  padding: 30px;\n  text-align: center;\n}\n.your-cart .cart-totals {\n  text-align: center;\n  justify-content: center;\n}\n.your-cart .cart-totals .cart-totals-price {\n  font-size: 30px;\n  padding: 20px;\n}\n.your-cart .cart-totals button {\n  width: 150px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
