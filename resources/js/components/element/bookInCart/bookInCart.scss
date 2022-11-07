@@ -28,6 +28,9 @@
             font-size: 15px;
         }
     }
+    .product-in-cart-price{
+        text-align: center;
+    }
 
     .plus-minus-number-input{
         display: flex;
@@ -42,5 +45,8 @@
         button{
             height: 100%;
         }
+    }
+    .product-in-cart-price{
+        text-align: center;
     }
 }

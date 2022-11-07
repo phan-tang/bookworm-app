@@ -1,5 +1,5 @@
 .footer{
-    background-color: #F3EFEF;
+    background-color: black;
     margin-top: 100px;
     padding: 30px;
     .brand-icon{
@@ -12,10 +12,12 @@
     .brand-information{
         width: auto;
         h5{
+            color: #f75454;
             font-weight: bold;
             margin-bottom: 2px;
         }
         p{
+            color: white;
             margin-bottom: 2px;
         }
     }

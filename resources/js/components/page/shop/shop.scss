@@ -1,8 +1,7 @@
 .shop-content {
     .shop-books-show{
-        margin-top: 20px;
-
         .describe-books-show-content{
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
@@ -11,8 +10,11 @@
             justify-content: flex-end;
             align-items: center;
         }
-    }
-    .books-show{
-        border: none;
+        .books-show{
+            margin-top: 20px;
+            border: none;
+            display: flex;
+            justify-content: center;
+        }
     }
 }

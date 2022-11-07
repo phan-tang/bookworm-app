@@ -9,8 +9,9 @@ body .line {
   height: 1px;
 }
 body .part-title p {
+  padding-top: 10px;
   float: left;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: bold;
   color: #9C4343;
 }
@@ -27,11 +28,8 @@ body .button {
   font-weight: bold;
 }
 body .button:hover {
-  color: #9C4343;
-  background-color: white;
-}
-body .badge {
-  background-color: black;
+  color: white;
+  background-color: #8a3b3b;
 }
 body .previous-price {
   text-decoration: line-through;

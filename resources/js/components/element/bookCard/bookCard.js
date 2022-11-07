@@ -28,8 +28,9 @@ function BookCard(props) {
     return (
         <>
             <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                <Link className='book-link' to={`/product/${props.bookCard.id}`}>
-                    <div className="card book-card">
+                {/* <Link className='book-link' to={`/product/${props.bookCard.id}`}> */}
+                <div className="card book-card">
+                    <Link className='book-link' to={`/product/${props.bookCard.id}`}>
                         {displayBookCoverImage(props.bookCard)}
                         <div className="card-body">
                             <h5 className="card-title">{props.bookCard.book_title}</h5>
@@ -38,8 +39,9 @@ function BookCard(props) {
                         <div className="book-card-price">
                             {displayBookPrice(props.bookCard)}
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
+                {/* </Link> */}
             </div>
         </>
     );

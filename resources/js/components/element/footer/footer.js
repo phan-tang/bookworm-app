@@ -2,15 +2,14 @@ import React from 'react';
 import 'react-dom';
 import './footer.scss';
 import bookworm_icon from '../../../../assets/bookworm_icon.svg';
+import bookworm_icon_white from '../../../../assets/bookworm_icon_white.svg';
 
 function Footer() {
     return (
         <div className="footer">
             <div className="row">
                 <span className="brand-icon">
-                    <a>
-                        <img src={bookworm_icon} alt="" />
-                    </a>
+                    <img src={bookworm_icon_white} alt="" />
                 </span>
                 <span className="brand-information">
                     <h5>BOOKWORM</h5>

@@ -1,9 +1,9 @@
 .book-link{
     text-decoration: none;
 }
-
 .book-card{
-    margin: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 100%;
     max-width: 300px;
     h5{
@@ -38,5 +38,4 @@
 
 .book-card:hover{
     transform: scale(1.02);
-    box-shadow: 0 10px 20px gray, 0 4px 8px gray;
 }

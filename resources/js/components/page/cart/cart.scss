@@ -15,9 +15,13 @@
 .cart-totals{
     text-align: center;
     justify-content: center;
-  }
   
-  .cart-totals-price{
-    font-size: 30px;
-    padding: 20px;
-  }
+    .cart-totals-price{
+        font-size: 30px;
+        padding: 20px;
+    }
+
+    button{
+width: 150px;
+    }
+}

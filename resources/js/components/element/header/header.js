@@ -4,6 +4,7 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './header.scss';
 import bookworm_icon from '../../../../assets/bookworm_icon.svg';
+import bookworm_icon_white from '../../../../assets/bookworm_icon_white.svg';
 import Login from '../login/login';
 import { toast } from 'react-toastify';
 
@@ -65,11 +66,11 @@ function Header(props) {
     }
 
     return (
-        <div className="navbar fixed-top navbar-light bg-light">
-            <div className="container-fluid">
+        <div className="navbar fixed-top">
+            <div className="container-fluid navbar">
                 <div className="navbar-header">
                     <a className="navbar-brand">
-                        <img src={bookworm_icon} alt="" />
+                        <img src={bookworm_icon_white} alt="" />
                     </a>
                     <span>BOOKWORM</span>
                 </div>

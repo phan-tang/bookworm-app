@@ -24,8 +24,7 @@
         justify-content: center;
       
         .nav-item.nav-link{
-            background-color: white;
-            color: #E69393;
+            color: black;
             padding: 8px;
             border-radius: 8px;
             border: 1px solid white;
@@ -34,12 +33,12 @@
         }
       
         .nav-item.nav-link:hover{
-            color: #9C4343;
+            color: #f75454;
         }
       
         .nav-item.nav-link.active{
-            color: black;
-            background-color: #E69393;
+            color: white;
+            background-color: #f75454;
         }
     }
 }

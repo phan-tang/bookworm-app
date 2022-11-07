@@ -148,7 +148,7 @@ function Shop() {
                         </div>
                         {/* <!-- Books Show --> */}
                         <div className="col-xl-10 col-lg-10 col-md-12 col-sm-12 shop-books-show">
-                            <div className="row">
+                            <div className="row describe-edit-books-show-content">
                                 <div className="col-6 describe-books-show-content">
                                     {displayDescribeBooksShowContent()}
                                 </div>

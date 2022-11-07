@@ -8965,15 +8965,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function App() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([{
-      "book_id": 657,
-      "title": "Test order fail",
-      "author": "Oliz",
-      "book_cover_photo": null,
-      "quantity": 3,
-      "final_price": 30,
-      "previous_price": 30
-    }]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     bookCart = _useState2[0],
     setBookCart = _useState2[1];
@@ -9206,11 +9198,11 @@ function BookCard(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-        className: "book-link",
-        to: "/product/".concat(props.bookCard.id),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "card book-card",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "card book-card",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "book-link",
+          to: "/product/".concat(props.bookCard.id),
           children: [displayBookCoverImage(props.bookCard), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "card-body",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
@@ -9710,7 +9702,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _footer_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./footer.scss */ "./resources/js/components/element/footer/footer.scss");
 /* harmony import */ var _assets_bookworm_icon_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../assets/bookworm_icon.svg */ "./resources/assets/bookworm_icon.svg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _assets_bookworm_icon_white_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../assets/bookworm_icon_white.svg */ "./resources/assets/bookworm_icon_white.svg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -9718,25 +9712,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Footer() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     className: "footer",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "row",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
         className: "brand-icon",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            src: _assets_bookworm_icon_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
-            alt: ""
-          })
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+          src: _assets_bookworm_icon_white_svg__WEBPACK_IMPORTED_MODULE_4__["default"],
+          alt: ""
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
         className: "brand-information",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h5", {
           children: "BOOKWORM"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
           children: "Address"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
           children: "Phone"
         })]
       })]
@@ -9760,14 +9752,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var _header_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./header.scss */ "./resources/js/components/element/header/header.scss");
 /* harmony import */ var _assets_bookworm_icon_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../assets/bookworm_icon.svg */ "./resources/assets/bookworm_icon.svg");
-/* harmony import */ var _login_login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../login/login */ "./resources/js/components/element/login/login.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _assets_bookworm_icon_white_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../assets/bookworm_icon_white.svg */ "./resources/assets/bookworm_icon_white.svg");
+/* harmony import */ var _login_login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../login/login */ "./resources/js/components/element/login/login.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.mjs");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 var _excluded = ["children", "to"];
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
@@ -9788,20 +9781,21 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 function Header(props) {
   //Custom link of navbar
   var HeaderLink = function HeaderLink(_ref) {
     var children = _ref.children,
       to = _ref.to,
       props = _objectWithoutProperties(_ref, _excluded);
-    var resolved = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useResolvedPath)(to);
-    var match = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useMatch)({
+    var resolved = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useResolvedPath)(to);
+    var match = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useMatch)({
       path: resolved.pathname,
       end: true
     });
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("li", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
       className: "nav-item",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, _objectSpread(_objectSpread({
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, _objectSpread(_objectSpread({
         to: to
       }, props), {}, {
         className: match ? 'nav-link active' : 'nav-link',
@@ -9825,7 +9819,7 @@ function Header(props) {
                   Authorization: "Bearer ".concat(accessToken)
                 }
               }).then(function (response) {
-                react_toastify__WEBPACK_IMPORTED_MODULE_6__.toast.success("Logged out successfully!");
+                react_toastify__WEBPACK_IMPORTED_MODULE_7__.toast.success("Logged out successfully!");
                 localStorage.clear();
                 props.setUserInformation(null);
                 props.setShow(false);
@@ -9847,9 +9841,9 @@ function Header(props) {
   //Function used to display login button or user's name
   var displayUser = function displayUser() {
     if (props.userInformation == null) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("li", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
         className: "nav-item",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
           className: "nav-link",
           onClick: function onClick() {
             return props.setShow(true);
@@ -9858,19 +9852,19 @@ function Header(props) {
         })
       });
     }
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("li", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
       className: "nav-item",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("span", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
         className: "dropdown",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
           className: "dropdown-button nav-link",
           type: "button",
           "data-bs-toggle": "dropdown",
           "aria-expanded": "false",
           children: props.userInformation.full_name
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("ul", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
           className: "dropdown-menu",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
             className: "nav-link dropdown-item",
             onClick: function onClick() {
               return handleLogout();
@@ -9881,35 +9875,35 @@ function Header(props) {
       })
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-    className: "navbar fixed-top navbar-light bg-light",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      className: "container-fluid",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    className: "navbar fixed-top",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      className: "container-fluid navbar",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "navbar-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
           className: "navbar-brand",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-            src: _assets_bookworm_icon_svg__WEBPACK_IMPORTED_MODULE_4__["default"],
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+            src: _assets_bookworm_icon_white_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
             alt: ""
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
           children: "BOOKWORM"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("ul", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("ul", {
         className: "nav nav-pills",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(HeaderLink, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(HeaderLink, {
           to: "/",
           children: "Home"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(HeaderLink, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(HeaderLink, {
           to: "/shop",
           children: "Shop"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(HeaderLink, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(HeaderLink, {
           to: "/about",
           children: "About"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(HeaderLink, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(HeaderLink, {
           to: "/cart",
-          children: ["Cart ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          children: ["Cart ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
             className: "badge",
             children: props.numberOfBooks
           })]
@@ -11706,7 +11700,7 @@ function Shop() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
             className: "col-xl-10 col-lg-10 col-md-12 col-sm-12 shop-books-show",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-              className: "row",
+              className: "row describe-edit-books-show-content",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "col-6 describe-books-show-content",
                 children: displayDescribeBooksShowContent()
@@ -17174,7 +17168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".book-link {\n  text-decoration: none;\n}\n\n.book-card {\n  margin: 3px;\n  height: 100%;\n  max-width: 300px;\n}\n.book-card h5 {\n  font-weight: bold;\n  height: 75px;\n  overflow: auto;\n  color: #9C4343;\n}\n.book-card img {\n  height: 300px;\n}\n.book-card .default-book-cover-photo {\n  height: 300px;\n  background-color: gray;\n}\n.book-card .card-text {\n  color: black;\n}\n.book-card .book-card-price {\n  background-color: #F3EFEF;\n}\n.book-card .book-card-price span {\n  margin: 5px;\n  padding-left: 10px;\n  color: black;\n}\n\n.book-card:hover {\n  transform: scale(1.02);\n  box-shadow: 0 10px 20px gray, 0 4px 8px gray;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".book-link {\n  text-decoration: none;\n}\n\n.book-card {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  height: 100%;\n  max-width: 300px;\n}\n.book-card h5 {\n  font-weight: bold;\n  height: 75px;\n  overflow: auto;\n  color: #9C4343;\n}\n.book-card img {\n  height: 300px;\n}\n.book-card .default-book-cover-photo {\n  height: 300px;\n  background-color: gray;\n}\n.book-card .card-text {\n  color: black;\n}\n.book-card .book-card-price {\n  background-color: #F3EFEF;\n}\n.book-card .book-card-price span {\n  margin: 5px;\n  padding-left: 10px;\n  color: black;\n}\n\n.book-card:hover {\n  transform: scale(1.02);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17198,7 +17192,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 50px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".product-in-cart-detail h5 {\n  font-weight: bold;\n  font-size: 18px;\n}\n.product-in-cart-detail .product-in-cart-name {\n  display: flex;\n  align-items: center;\n}\n.product-in-cart-detail .product-in-cart-name .book-title {\n  height: 50px;\n  overflow: auto;\n}\n.product-in-cart-detail .product-in-cart-name .default-book-cover-photo {\n  margin: 5px;\n  height: 150px;\n  width: 120px;\n  background-color: gray;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name img {\n  margin: 5px;\n  display: inline;\n  width: 120px;\n  height: 150px;\n  border-radius: 8px;\n}\n.product-in-cart-detail .product-in-cart-name h6 {\n  font-size: 15px;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}\n.product-in-cart-detail .plus-minus-number-input {\n  display: flex;\n  align-items: center;\n  height: 30px;\n}\n.product-in-cart-detail .plus-minus-number-input .product-quantity {\n  width: 60%;\n  height: 100%;\n  text-align: center;\n  border: solid black 1px;\n}\n.product-in-cart-detail .plus-minus-number-input button {\n  height: 100%;\n}\n.product-in-cart-detail .product-in-cart-price {\n  text-align: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17246,7 +17240,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".filter-book .filter-by-header {\n  display: flex;\n  align-items: center;\n}\n.filter-book .filter-by-header h6 {\n  font-weight: bold;\n}\n.filter-book .filter-by-header .clear-all {\n  display: flex;\n  justify-content: flex-end;\n}\n.filter-book .filter-by-header .clear-all button {\n  font-size: 12px;\n}\n.filter-book .card {\n  margin-top: 20px;\n}\n.filter-book .card .card-title {\n  font-weight: bold;\n  color: #9C4343;\n}\n.filter-book .card .filter-item {\n  display: flex;\n  align-items: center;\n}\n.filter-book .card .filter-item .delete-select-value {\n  padding: 5px;\n  font-size: 15px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".filter-book .filter-by-header {\n  margin-bottom: 25px;\n  display: flex;\n  align-items: center;\n}\n.filter-book .filter-by-header h6 {\n  font-weight: bold;\n}\n.filter-book .filter-by-header .clear-all {\n  display: flex;\n  justify-content: flex-end;\n}\n.filter-book .filter-by-header .clear-all button {\n  font-size: 12px;\n}\n.filter-book .card {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.filter-book .card .card-title {\n  font-weight: bold;\n  color: #9C4343;\n}\n.filter-book .card .filter-item {\n  display: flex;\n  align-items: center;\n}\n.filter-book .card .filter-item .delete-select-value {\n  padding: 5px;\n  font-size: 15px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17270,7 +17264,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".footer {\n  background-color: #F3EFEF;\n  margin-top: 100px;\n  padding: 30px;\n}\n.footer .brand-icon {\n  display: flex;\n  align-content: center;\n  align-items: center;\n  justify-content: flex-end;\n  width: 200px;\n}\n.footer .brand-information {\n  width: auto;\n}\n.footer .brand-information h5 {\n  font-weight: bold;\n  margin-bottom: 2px;\n}\n.footer .brand-information p {\n  margin-bottom: 2px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".footer {\n  background-color: black;\n  margin-top: 100px;\n  padding: 30px;\n}\n.footer .brand-icon {\n  display: flex;\n  align-content: center;\n  align-items: center;\n  justify-content: flex-end;\n  width: 200px;\n}\n.footer .brand-information {\n  width: auto;\n}\n.footer .brand-information h5 {\n  color: #f75454;\n  font-weight: bold;\n  margin-bottom: 2px;\n}\n.footer .brand-information p {\n  color: white;\n  margin-bottom: 2px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17294,7 +17288,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar .navbar-header {\n  display: flex;\n  align-items: center;\n}\n.navbar .navbar-header img {\n  height: 30px;\n  width: 60px;\n}\n.navbar .navbar-header span {\n  font-weight: bold;\n  font-size: 25px;\n}\n.navbar .nav-pills li.nav-item .nav-link {\n  color: black;\n  font-weight: bold;\n}\n.navbar .nav-pills li.nav-item .nav-link.active {\n  background-color: #E69393;\n  color: black;\n  border-radius: 8px;\n}\n.navbar .nav-pills li.nav-item .nav-link:hover {\n  color: #9C4343;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item {\n  background-color: white;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar {\n  background-color: black;\n}\n.navbar .navbar-header {\n  display: flex;\n  align-items: center;\n}\n.navbar .navbar-header img {\n  height: 30px;\n}\n.navbar .navbar-header span {\n  font-weight: bold;\n  color: #f75454;\n  font-size: 25px;\n}\n.navbar .nav-pills li.nav-item .nav-link {\n  color: white;\n  font-weight: bold;\n}\n.navbar .nav-pills li.nav-item .nav-link .badge {\n  background-color: #f75454;\n}\n.navbar .nav-pills li.nav-item .nav-link.active {\n  background-color: #f75454;\n  color: white;\n  border-radius: 8px;\n}\n.navbar .nav-pills li.nav-item .nav-link.active .badge {\n  background-color: black;\n}\n.navbar .nav-pills li.nav-item .nav-link:hover {\n  color: #f75454;\n}\n.navbar .nav-pills li.nav-item .nav-link.active {\n  color: white;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item {\n  background-color: white;\n  color: black;\n}\n.navbar .nav-pills li.nav-item .nav-link.dropdown-item:hover {\n  color: #f75454;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17366,7 +17360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bookworm-information h1 {\n  padding: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n.bookworm-information .about-content {\n  padding: 30px;\n}\n.bookworm-information .about-content span {\n  padding-top: 15px;\n  font-size: 20px;\n}\n.bookworm-information .about-content h4 {\n  font-weight: bold;\n  padding-top: 30px;\n}\n.bookworm-information .about-content p {\n  padding-top: 15px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bookworm-information h1 {\n  padding: 20px;\n  font-weight: bold;\n  text-align: center;\n}\n.bookworm-information .about-content {\n  padding: 30px 80px 30px 80px;\n}\n.bookworm-information .about-content span {\n  padding-top: 15px;\n  font-size: 20px;\n}\n.bookworm-information .about-content h4 {\n  font-weight: bold;\n  padding-top: 30px;\n}\n.bookworm-information .about-content p {\n  padding-top: 15px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17390,7 +17384,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".products-in-cart {\n  margin-top: 50px;\n}\n.products-in-cart h5 {\n  font-weight: bold;\n}\n.products-in-cart .products-in-cart-table h3 {\n  padding: 30px;\n  text-align: center;\n}\n\n.cart-totals {\n  text-align: center;\n  justify-content: center;\n}\n\n.cart-totals-price {\n  font-size: 30px;\n  padding: 20px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".products-in-cart {\n  margin-top: 50px;\n}\n.products-in-cart h5 {\n  font-weight: bold;\n}\n.products-in-cart .products-in-cart-table h3 {\n  padding: 30px;\n  text-align: center;\n}\n\n.cart-totals {\n  text-align: center;\n  justify-content: center;\n}\n.cart-totals .cart-totals-price {\n  font-size: 30px;\n  padding: 20px;\n}\n.cart-totals button {\n  width: 150px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17414,7 +17408,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".col.view-all {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.col.view-all .button {\n  font-size: 10px;\n  text-decoration: none;\n  padding: 10px;\n}\n\n.books-show {\n  border: 1px solid lightgray;\n  margin-top: 10px;\n}\n\n.featured-books .part-title {\n  text-align: center;\n}\n.featured-books .tabs {\n  display: flex;\n  justify-content: center;\n}\n.featured-books .tabs .nav-item.nav-link {\n  background-color: white;\n  color: #E69393;\n  padding: 8px;\n  border-radius: 8px;\n  border: 1px solid white;\n  font-weight: bold;\n  margin: 5px;\n}\n.featured-books .tabs .nav-item.nav-link:hover {\n  color: #9C4343;\n}\n.featured-books .tabs .nav-item.nav-link.active {\n  color: black;\n  background-color: #E69393;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".col.view-all {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.col.view-all .button {\n  font-size: 10px;\n  text-decoration: none;\n  padding: 10px;\n}\n\n.books-show {\n  border: 1px solid lightgray;\n  margin-top: 10px;\n}\n\n.featured-books .part-title {\n  text-align: center;\n}\n.featured-books .tabs {\n  display: flex;\n  justify-content: center;\n}\n.featured-books .tabs .nav-item.nav-link {\n  color: black;\n  padding: 8px;\n  border-radius: 8px;\n  border: 1px solid white;\n  font-weight: bold;\n  margin: 5px;\n}\n.featured-books .tabs .nav-item.nav-link:hover {\n  color: #f75454;\n}\n.featured-books .tabs .nav-item.nav-link.active {\n  color: white;\n  background-color: #f75454;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17462,7 +17456,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".shop-content .shop-books-show {\n  margin-top: 20px;\n}\n.shop-content .shop-books-show .describe-books-show-content {\n  display: flex;\n  align-items: center;\n}\n.shop-content .shop-books-show .edit-books-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.shop-content .books-show {\n  border: none;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".shop-content .shop-books-show .describe-books-show-content {\n  margin-bottom: 10px;\n  display: flex;\n  align-items: center;\n}\n.shop-content .shop-books-show .edit-books-show-content {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.shop-content .shop-books-show .books-show {\n  margin-top: 20px;\n  border: none;\n  display: flex;\n  justify-content: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18444,6 +18438,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bookworm_icon.svg?1c4820354df8961bd663b56c808ad6ef");
+
+/***/ }),
+
+/***/ "./resources/assets/bookworm_icon_white.svg":
+/*!**************************************************!*\
+  !*** ./resources/assets/bookworm_icon_white.svg ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bookworm_icon_white.svg?cd5dc3c2fcba567bbac8da164568aaf1");
 
 /***/ }),
 
