@@ -55,6 +55,7 @@ function Cart(props) {
                 let filter_id = [];
                 let quantityDeleteBooks = 0;
                 let priceDeleteBooks = 0;
+                let errorMessage = "";
                 props.cart.forEach((bookInCart) => {
                     let book = allBooks.find((item) => item.id == bookInCart.book_id);
                     if (book != null && book.final_price == bookInCart.final_price) {
@@ -64,6 +65,10 @@ function Cart(props) {
                         filter_id.push(bookInCart.book_id);
                         priceDeleteBooks -= bookInCart.quantity * bookInCart.final_price;
                         quantityDeleteBooks -= bookInCart.quantity;
+                        if (errorMessage != "") {
+                            errorMessage += ", ";
+                        }
+                        errorMessage += bookInCart.title;
                     }
                 });
                 let cart = props.cart.filter((book) => filter_id.includes(book.book_id) == false);
@@ -72,7 +77,7 @@ function Cart(props) {
                 }
                 else {
                     props.handleChangeBooksInCart(cart, quantityDeleteBooks, priceDeleteBooks);
-                    toast.error("Some books are not unavailable now!");
+                    toast.error("Some books are not unavailable now: " + errorMessage);
                 }
             }
             else {
@@ -94,8 +99,8 @@ function Cart(props) {
                 console.log(response);
                 if (response.status == 201) {
                     props.handleChangeBooksInCart([], -props.numberOfBooks, -props.totalPrice);
-                    toast.success("Ordered successfully!");
-                    return navigate("/");
+                    toast.success("Ordered successfully!", { autoClose: 10000 });
+                    setTimeout(() => { return navigate("/") }, 10000);
                 }
                 else {
                     toast.error("Order failed!");
