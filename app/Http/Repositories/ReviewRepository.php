@@ -74,7 +74,7 @@ class ReviewRepository extends BaseRepository
                 foreach ($data as $key => $value) {
                     $average_rating_star += $value->rating_start;
                 }
-                $average_rating_star = $average_rating_star / count($data);
+                $average_rating_star = round($average_rating_star / count($data), 2);
                 return $average_rating_star;
             }
             return $average_rating_star;
