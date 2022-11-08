@@ -40,7 +40,7 @@ class OrderRepository extends BaseRepository
                 DB::table('order')->insert([
                     'user_id' => $user_id,
                     'order_date' => Carbon::now('Asia/Ho_Chi_Minh'),
-                    'order_amount' => $order_amount
+                    'order_amount' => round($order_amount, 2)
                 ]);
 
                 DB::table('order_item')->insert($order_items);
