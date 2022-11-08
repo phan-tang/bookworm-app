@@ -301,4 +301,17 @@ class BooksAPITest extends TestCase
         }
         $this->assertTrue($isTrue);
     }
+
+    /**
+     * Test get book by id successfully.
+     *
+     * @return void
+     */
+    public function testGetBookByIdSuccessfully()
+    {
+        $id = 3;
+        $response = $this->get('/api/book/' . $id);
+        $book = json_decode($response->getContent())->data;
+        $this->assertEquals($id, $book->id);
+    }
 }
