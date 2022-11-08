@@ -169,7 +169,7 @@ function Cart(props) {
                         <div className="card cart-totals">
                             <h5 className="card-header">Cart Totals</h5>
                             <div className="card-body">
-                                <h5 className="cart-totals-price">${props.totalPrice}</h5>
+                                <h5 className="cart-totals-price">${props.totalPrice.toFixed(2)}</h5>
                                 <button className="button" onClick={() => handleClickButtonPlaceOrder()}>Place order</button>
                             </div>
                         </div>

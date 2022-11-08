@@ -10193,7 +10193,7 @@ function Pagination(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
       className: getClassName(props.links[0]),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "page-link",
+        className: "page-link previous-next",
         onClick: function onClick() {
           return handleClickButtonPage(getPage(props.links[0].label));
         },
@@ -10213,7 +10213,7 @@ function Pagination(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
       className: getClassName(props.links[props.links.length - 1]),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "page-link",
+        className: "page-link previous-next",
         onClick: function onClick() {
           return handleClickButtonPage(getPage(props.links[props.links.length - 1].label));
         },
@@ -10691,7 +10691,7 @@ function Cart(props) {
               className: "card-body",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h5", {
                 className: "cart-totals-price",
-                children: ["$", props.totalPrice]
+                children: ["$", props.totalPrice.toFixed(2)]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                 className: "button",
                 onClick: function onClick() {
@@ -17486,7 +17486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".pagination {\n  padding-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n.pagination li.page-item.active button {\n  background-color: #9C4343;\n  color: white;\n  width: auto;\n  border: 1px solid #9C4343;\n}\n.pagination li.page-item.disabled button {\n  width: auto;\n  color: gray;\n}\n.pagination li.page-item button {\n  width: auto;\n  color: black;\n}\n.pagination li.page-item button:hover {\n  color: #E69393;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "ul.pagination {\n  padding-top: 20px;\n  padding-right: 0px;\n  display: flex;\n  justify-content: center;\n}\nul.pagination li.page-item.active button {\n  background-color: #9C4343;\n  color: white;\n  width: auto;\n  border: 1px solid #9C4343;\n}\nul.pagination li.page-item.disabled button {\n  width: auto;\n  color: gray;\n}\nul.pagination li.page-item button {\n  width: auto;\n  color: black;\n}\nul.pagination li.page-item button:hover {\n  color: #E69393;\n}\nul.pagination li.page-item .previous-next {\n  width: auto;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
