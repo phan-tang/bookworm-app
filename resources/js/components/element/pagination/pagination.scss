@@ -1,5 +1,6 @@
-.pagination{
+ul.pagination{
     padding-top: 20px;
+    padding-right: 0px;
     display: flex;
     justify-content: center;
 
@@ -18,9 +19,16 @@
     li.page-item button{
         width: auto;
         color: black;
+        
     }
 
     li.page-item button:hover{
         color: #E69393;
+    }
+
+    li.page-item{
+        .previous-next{
+            width: auto;
+        }
     }
 }

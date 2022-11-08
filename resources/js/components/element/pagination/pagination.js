@@ -45,7 +45,7 @@ function Pagination(props) {
     return (
         <ul className="pagination">
             <li className={getClassName(props.links[0])} key={"page_previous"}>
-                <button className="page-link" onClick={() => handleClickButtonPage(getPage(props.links[0].label))}>Previous</button>
+                <button className="page-link previous-next" onClick={() => handleClickButtonPage(getPage(props.links[0].label))}>Previous</button>
             </li>
             {getShowPage().map((link) => {
                 return (
@@ -55,7 +55,7 @@ function Pagination(props) {
                 );
             })}
             <li className={getClassName(props.links[props.links.length - 1])} key={"page_next"}>
-                <button className="page-link" onClick={() => handleClickButtonPage(getPage(props.links[props.links.length - 1].label))}>Next</button>
+                <button className="page-link previous-next" onClick={() => handleClickButtonPage(getPage(props.links[props.links.length - 1].label))}>Next</button>
             </li>
         </ul>
     );
