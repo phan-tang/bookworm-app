@@ -27,6 +27,7 @@ import Product from './components/page/product/product';
 import Header from './components/element/header/header';
 import Footer from './components/element/footer/footer';
 import Login from './components/element/login/login';
+import Error from './components/page/error/error';
 import book1 from '../assets/bookcover/book1.jpg';
 import book2 from '../assets/bookcover/book2.jpg';
 import book3 from '../assets/bookcover/book3.jpg';
@@ -102,6 +103,7 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/cart" element={<Cart userInformation={user} setShow={setModalShow} cart={bookCart} numberOfBooks={numberBooks} totalPrice={cartTotal} handleChangeBooksInCart={handleChangeBooksInCart} />} />
                     <Route path="/product/:id" element={<Product cart={bookCart} setCart={setBookCart} setCartTotalPrice={setCartTotalPrice} setNumberOfBooks={setNumberOfBooks} />} />
+                    <Route path="/*" element={<Error></Error>}></Route>
                 </Routes>
             </div>
             <Login
